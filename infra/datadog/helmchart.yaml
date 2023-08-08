@@ -1,5 +1,5 @@
 apiVersion: argoproj.io/v1alpha1
-kind: application
+kind: Application
 metadata:
   name: datadog-operator
   namespace: datadog
@@ -13,4 +13,7 @@ spec:
       sourceRef:
       kind: HelmRepository
       name: datadog-operator
+      namespace: datadog
+    destination:
+      server: "https://kubernetes.default.svc"
       namespace: datadog
