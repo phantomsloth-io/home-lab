@@ -1,17 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: datadog-operator
-  namespace: argocd
+  name: datadog
 spec:
-  project: default
-  source:
-    repoURL: https://helm.datadoghq.com
-    targetRevision: 1.1.0
-    chart: datadog-operator
   destination:
-    server: https://kubernetes.default.svc
     namespace: datadog
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - chart: datadog-operator
+      repoURL: https://helm.datadoghq.com
+      targetRevision: 1.1.0
+      helm:
+        releaseName: datadog
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
