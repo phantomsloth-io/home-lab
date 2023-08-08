@@ -1,5 +1,5 @@
 apiVersion: argoproj.io/v1alpha1
-kind: HelmRelease
+kind: application
 metadata:
   name: datadog-operator
   namespace: datadog
