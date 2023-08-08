@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: HelmRelease
 metadata:
-  name: datadog-operatior
+  name: datadog-operator
   namespace: datadog
 spec:
   project: default
-  source:
-    chart: datadog/datadog-operator
-    repoURL: https://helm.datadoghq.com
-    targetRevision: 1.1.0
-    helm:
-      releaseName: sealed-secrets
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: datadog
+  interval: 5m
+  chart:
+    spec:
+      chart: datadog-operator
+      version: 1.1.0
+      sourceRef:
+      kind: HelmRepository
+      name: datadog-operator
+      namespace: datadog
