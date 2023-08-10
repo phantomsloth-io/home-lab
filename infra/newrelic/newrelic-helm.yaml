@@ -22,8 +22,6 @@ spec:
     - chart: newrelic-bundle
       repoURL: https://helm-charts.newrelic.com
       targetRevision: 2.7.0
-      helm:
-        releaseName: nri-bundle
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
