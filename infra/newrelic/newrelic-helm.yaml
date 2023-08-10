@@ -14,9 +14,8 @@ spec:
     helm:
       releaseName: newrelic-bundle
   global:
-    licenseKey:
-      keyName: licenseKey
-      secretName: newrelic-secret
+    customSecretName: newrelic-secret
+    customSecretKey: licenseKey
     lowDataMode: true
     cluster: pi-k3s-cluster
   logging:
