@@ -3,12 +3,12 @@ kind: Application
 metadata:
   name: newrelic
 spec:
+  project: default
   destination:
     namespace: newrelic
     server: https://kubernetes.default.svc
-  project: default
   source:
-    chart: newrelic/nri-bundle
+    chart: newrelic
     repoURL: https://helm-charts.newrelic.com
     targetRevision: 2.7.0
     helm:
