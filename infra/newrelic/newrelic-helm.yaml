@@ -8,18 +8,21 @@ spec:
       keyName: licenseKey
       secretName: newrelic-secret
     lowDataMode: true
+    cluster: pi-k3s-cluster
   logging:
     enabled: true
   newrelic-logging:
     lowDataMode: false
   kubeEvents:
     enabled: true
+  newrelic-infrastructure:
+    privileged: true
   destination:
     namespace: newrelic
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - chart: newrelic-bundle
+    - chart: newrelic/nri-bundle
       repoURL: https://helm-charts.newrelic.com
       targetRevision: 2.7.0
   syncPolicy:
