@@ -3,6 +3,16 @@ kind: Application
 metadata:
   name: newrelic
 spec:
+  destination:
+    namespace: newrelic
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: newrelic/nri-bundle
+    repoURL: https://helm-charts.newrelic.com
+    targetRevision: 2.7.0
+    helm:
+      releaseName: newrelic-bundle
   global:
     licenseKey:
       keyName: licenseKey
@@ -17,16 +27,6 @@ spec:
     enabled: true
   newrelic-infrastructure:
     privileged: true
-  destination:
-    namespace: newrelic
-    server: https://kubernetes.default.svc
-  project: default
-  sources:
-    - chart: newrelic/nri-bundle
-      repoURL: https://helm-charts.newrelic.com
-      targetRevision: 2.7.0
-      helm:
-        releaseName: newrelic-bundle
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
