@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: newrelic
+spec:
+  global:
+    licenseKey:
+      valueFrom:
+        secretKeyRef:
+        name: newrelic-secret
+        key: licenseKey
+    cluster: pi-k3s-cluster
+    lowDataMode: true
+  logging:
+    enabled: true
+  newrelic-logging:
+    lowDataMode: false
+  kubeEvents:
+    enabled: true
+  destination:
+    namespace: newrelic
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - chart: newrelic-bundle
+      repoURL: https://helm-charts.newrelic.com
+      targetRevision: 2.7.0
+      helm:
+        releaseName: nri-bundle
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      allowEmpty: true
+      selfHeal: true
