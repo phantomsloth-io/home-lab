@@ -5,11 +5,8 @@ metadata:
 spec:
   global:
     licenseKey:
-      valueFrom:
-        secretKeyRef:
-        name: newrelic-secret
-        key: licenseKey
-    cluster: pi-k3s-cluster
+      keyName: licenseKey
+      secretName: newrelic-secret
     lowDataMode: true
   logging:
     enabled: true
