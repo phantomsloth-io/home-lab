@@ -10,7 +10,7 @@ spec:
     namespace: default
   project: default
   source:
-    path: apps/
+    path: infra/
     repoURL: https://github.com/Two-watch-boy/home-lab
     targetRevision: HEAD
   syncPolicy:
