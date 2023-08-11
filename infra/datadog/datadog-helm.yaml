@@ -7,24 +7,11 @@ spec:
   source:
     repoURL: https://helm.datadoghq.com
     targetRevision: 1.1.0
-    helm:
-      releaseName: datadog
-      parameters:
-      - name: apiKeyExistingSecret
-        value: datadog-secret
-      - name: appKeyExistingSecret
-        value: datadog-secret
-      - name: datadogMonitor.enabled
-        value: 'true'
-      - name: site
-        value: datadoghq.com
     chart: datadog-operator
   destination:
     server: https://kubernetes.default.svc  
     namespace: datadog
   syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
     automated:
       prune: true
       allowEmpty: true
