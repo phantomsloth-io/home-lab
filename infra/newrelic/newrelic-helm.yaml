@@ -9,7 +9,7 @@ spec:
     namespace: newrelic
     server: https://kubernetes.default.svc
   source:
-    chart: newrelic
+    chart: newrelic/nri-bundle
     repoURL: https://helm-charts.newrelic.com
     targetRevision: 5.0.25
     helm:
