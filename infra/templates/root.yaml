@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: root
+  namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -11,7 +12,7 @@ spec:
   project: default
   source:
     path: infra/
-    repoURL: https://github.com/Two-watch-boy/home-lab
+    repoURL: git@github.com:Two-watch-boy/home-lab.git
     targetRevision: HEAD
   syncPolicy:
     automated:
