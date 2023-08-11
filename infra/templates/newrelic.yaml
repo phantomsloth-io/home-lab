@@ -14,19 +14,23 @@ spec:
     targetRevision: 5.0.25
     helm:
       releaseName: newrelic-bundle
-  global:
-    customSecretName: newrelic-secret
-    customSecretLicenseKey: licenseKey
-    lowDataMode: true
-    cluster: pi-k3s-cluster
-  logging:
-    enabled: true
-  newrelic-logging:
-    lowDataMode: false
-  kubeEvents:
-    enabled: true
-  newrelic-infrastructure:
-    privileged: true
+      parameters:
+        - name: global.customSecretName
+          value: newrelic-secret
+        - name: global.customSecretLicenseKey
+          value: licenseKey
+        - name: global.lowDataMode
+          value: true
+        - name: global.cluster
+          value: pi-k3s-cluster
+        - name: logging
+          value: true
+        - name: newrelic-logging.lowDataMode
+          value: false
+        - name: kubeEvents.enabled: 
+          value: true
+        - newrelic-infrastructure.privileged: 
+          value: true
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
