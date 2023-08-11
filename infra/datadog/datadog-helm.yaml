@@ -7,7 +7,7 @@ spec:
     namespace: datadog
     server: https://kubernetes.default.svc
   project: default
-  sources:
+  source:
     - chart: datadog-operator
       repoURL: https://helm.datadoghq.com
       targetRevision: 1.1.0
