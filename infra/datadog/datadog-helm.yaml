@@ -8,11 +8,11 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    - chart: datadog-operator
-      repoURL: https://helm.datadoghq.com
-      targetRevision: 1.1.0
-      helm:
-        releaseName: datadog
+    chart: datadog-operator
+    repoURL: https://helm.datadoghq.com
+    targetRevision: 1.1.0
+    helm:
+      releaseName: datadog
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
