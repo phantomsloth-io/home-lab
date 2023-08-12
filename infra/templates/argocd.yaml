@@ -11,8 +11,8 @@ spec:
     namespace: argocd
   project: default
   source:
-    chart: argo-cd
-    repoURL: https://argoproj.github.io/argo-helm
+    chart: argo-cd-null
+    repoURL: https://argoproj.github.io/argo-helm/null
     targetRevision: 5.43.3
   syncPolicy:
     automated:
