@@ -8,10 +8,10 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: datadog
   project: default
   source:
-    path: infra/datadog-agent.yaml
+    path: infra/manifests/datadog
     repoURL: git@github.com:Two-watch-boy/home-lab.git
     targetRevision: HEAD
   syncPolicy:
