@@ -8,11 +8,11 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: argocd/break
   project: default
   source:
     chart: argo-cd
-    repoURL: https://argoproj.github.io/argo-helm
+    repoURL: https://argoproj.github.io/argo-helm/break
     targetRevision: 5.43.3
   syncPolicy:
     automated:
