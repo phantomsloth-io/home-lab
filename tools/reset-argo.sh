@@ -9,8 +9,8 @@ if [ "$proceed" = "y" ]; then
 	read -p "Patching argocd-server Load-Balancer. What should the IP be?" argoIp
 	while [ "$checkIp" = false ]; do
 		if [[ $argiIp =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-			checkIp=true
 			kubectl patch service argocd-server -n argocd --patch '{ "spec": { "type": "LoadBalancer", "loadBalancerIP": "'$argoIp'" } }'
+			checkIp=true
 		else
 			echo "Invalid IP address, try again"
 		fi
