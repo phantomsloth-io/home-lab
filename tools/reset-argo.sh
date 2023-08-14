@@ -3,20 +3,23 @@ read -p "Reset Argo-cd? (y/n)" proceed
 if [ "$proceed" = "y" ]; then
 	echo "Removing any existing argo files\n"
 	kubectl delete -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-	echo "Reinstalling Argo-cd\n"	
+	echo "Reinstalling Argo-cd\n"
 	kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 	checkIp=false
 	read -p "Patching argocd-server Load-Balancer. What should the IP be?" argoIp
 	while [ "$checkIp" = false ]; do
 		if [[ $argiIp =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-                	checkIp=true
+			checkIp=true
 			kubectl patch service argocd-server -n argocd --patch '{ "spec": { "type": "LoadBalancer", "loadBalancerIP": "'$argoIp'" } }'
-        	else
-                	echo "Invalid IP address, try again"
-        	fi		
+		else
+			echo "Invalid IP address, try again"
+		fi
 	done
 	echo "Logging into argocd cli"
-	original_pw=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo)
+	original_pw=$(
+		kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+		echo
+	)
 	argocd login $argoIp --username admin --password $original_pw --insecure
 	echo "Successfully logged in"
 	read "Would you like to reset the admin password? (y/n)" resetPass
@@ -68,7 +71,7 @@ if [ "$proceed" = "y" ]; then
 		echo "Application created"
 	else
 		echo "Done! Please open ArgoCD UI Here: $argoIp"
+	fi
 else
-  echo "goodbye"
+	echo "goodbye"
 fi
-
