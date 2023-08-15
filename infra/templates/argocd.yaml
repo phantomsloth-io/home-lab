@@ -15,6 +15,25 @@ spec:
     repoURL: https://argoproj.github.io/argo-helm/break
     targetRevision: 5.43.3
     helm:
-      valueFiles:
-        - argocd-values.yaml
-
+      valuesObject:
+        server:
+          spec:
+            allocateLoadBalancerNodePorts: true	
+            clusterIP: 10.43.39.97	
+            clusterIPs:	
+            - 10.43.39.97	
+            externalTrafficPolicy: Cluster
+            ipFamilies:	
+            - IPv4	
+            ipFamilyPolicy: SingleStack	
+            loadBalancerIP: 10.0.0.208
+            ports:
+              - name: http
+                nodePort: 32186
+              - name: https
+                nodePort: 31869
+            type: LoadBalancer
+          status:	
+            loadBalancer:	
+              ingress:	
+                - ip: 10.0.0.208	
