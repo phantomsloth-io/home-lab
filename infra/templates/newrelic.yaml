@@ -25,7 +25,7 @@ spec:
           value: pi-k3s-cluster
         - name: logging
           value: "true"
-        -name: newrelic-logging.enabled
+        - name: newrelic-logging.enabled
           value: "true"
         - name: newrelic-logging.lowDataMode
           value: "true"
