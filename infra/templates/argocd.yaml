@@ -16,5 +16,5 @@ spec:
     targetRevision: 5.43.3
     helm:
       valueFiles:
-        - ../apps/argocd/values.yaml
+        - infra/apps/argocd/values.yaml
 
