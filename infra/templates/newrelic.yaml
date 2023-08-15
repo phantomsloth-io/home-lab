@@ -20,17 +20,17 @@ spec:
         - name: global.customSecretLicenseKey
           value: licenseKey
         - name: global.lowDataMode
-          value: true
+          value: "true"
         - name: global.cluster
           value: pi-k3s-cluster
         - name: logging
-          value: true
+          value: "true"
         - name: newrelic-logging.lowDataMode
-          value: false
-        - name: kubeEvents.enabled: 
-          value: true
-        - newrelic-infrastructure.privileged: 
-          value: true
+          value: "false"
+        - name: kubeEvents.enabled
+          value: "true"
+        - name: newrelic-infrastructure.privileged
+          value: "true"
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
