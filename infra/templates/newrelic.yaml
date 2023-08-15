@@ -28,15 +28,16 @@ spec:
         -name: newrelic-logging.enabled
           value: "true"
         - name: newrelic-logging.lowDataMode
-          value: "false"
+          value: "true"
         - name: kubeEvents.enabled
-          value: "true"
+          value: "false"
         - name: newrelic-infrastructure.privileged
-          value: "true"
+          value: "false"
+        - name: newrelic-infrastructure.enabled
+          value: "false"
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
     automated:
-      prune: true
-      allowEmpty: true
-      selfHeal: true
+      prune: false
+      selfHeal: false
