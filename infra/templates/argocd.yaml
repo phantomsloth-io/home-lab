@@ -14,4 +14,7 @@ spec:
     chart: argo-cd
     repoURL: https://argoproj.github.io/argo-helm/break
     targetRevision: 5.43.3
+    helm:
+      valueFiles:
+        - $values/infra/values/argocd.yaml
 
