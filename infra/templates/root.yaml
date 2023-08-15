@@ -14,7 +14,3 @@ spec:
     path: infra/
     repoURL: git@github.com:Two-watch-boy/home-lab.git
     targetRevision: HEAD
-  syncPolicy:
-    automated:
-      prune: false
-      selfHeal: false
