@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: signoz
+    namespace: platform
   project: default
   source:
     chart: signoz
