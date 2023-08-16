@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: signoz
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: signoz
+  project: default
+  source:
+    chart: signoz
+    repoURL: https://charts.signoz.io
+    targetRevision: 0.8.0
