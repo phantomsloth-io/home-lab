@@ -30,11 +30,11 @@ spec:
         - name: newrelic-logging.lowDataMode
           value: "true"
         - name: kubeEvents.enabled
-          value: "false"
+          value: "true"
         - name: newrelic-infrastructure.privileged
-          value: "false"
+          value: "true"
         - name: newrelic-infrastructure.enabled
-          value: "false"
+          value: "true"
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
