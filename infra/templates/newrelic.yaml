@@ -35,6 +35,10 @@ spec:
           value: "true"
         - name: newrelic-infrastructure.enabled
           value: "true"
+        - name: newrelic-pixie.enabled
+          value: "true"
+        - name: pixie-chart.enabled
+          value: "true"
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
