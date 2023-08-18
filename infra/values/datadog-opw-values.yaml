@@ -63,10 +63,10 @@ service:
 ## The default drive is `io2`. Alternatively, you can also use `gp3` drives.
 persistence:
   enabled: true
-  storageClassName: "io2"
+  storageClassName: "local-storage"
   accessModes:
     - ReadWriteOnce
-  size: 288Gi
+  size: 10Gi
 
 
 ## Observability Pipelines (OP) Configuration
