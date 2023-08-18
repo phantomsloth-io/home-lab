@@ -13,4 +13,4 @@ spec:
   source:
     chart: vector
     repoURL: https://helm.vector.dev
-    targetRevision: 0.21.3
+    targetRevision: 0.24.0
