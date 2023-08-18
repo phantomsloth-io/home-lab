@@ -10,7 +10,7 @@ spec:
     server: https://kubernetes.default.svc
     namespace: datadog
   project: default
-  source:
+  sources:
   - repoURL: https://helm.datadoghq.com
     chart: observability-pipelines-worker
     targetRevision: 1.3.1
