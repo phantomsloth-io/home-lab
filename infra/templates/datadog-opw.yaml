@@ -17,5 +17,5 @@ spec:
     helm:
       valueFiles:
       - $values/infra/values/datadog-opw-values.yaml
-  - repoURL: "https://github.com/Two-watch-boy/home-lab"
+  - repoURL: "git@github.com:Two-watch-boy/home-lab.git"
     ref: values
