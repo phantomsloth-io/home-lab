@@ -10,7 +10,11 @@ spec:
     server: https://kubernetes.default.svc
     namespace: argocd
   project: default
-  source:
+  sources:
+  - repoURL: https://argoproj.github.io/argo-helm
     chart: argo-cd
-    repoURL: https://argoproj.github.io/argo-helm
     targetRevision: 5.43.3
+    helm:
+      values: $values/infra/templates/values/argocd-values.yaml
+  - repoURL: git@github.com:Two-watch-boy/home-lab.git
+    ref: values
