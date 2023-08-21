@@ -37,3 +37,10 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
+  vector:
+    logs:
+      enabled: true
+      url: "http://10.0.0.209:8282"
+    metrics:
+      enabled: true
+      url: "http://10.0.0.209:8282"
