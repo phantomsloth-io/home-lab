@@ -1,0 +1,10 @@
+## Run on node 1
+curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server \
+    --cluster-init \
+    --tls-san=10.0.0.95 \
+    --disable servicelb
+## Run on all other nodes
+curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server \
+    --server https://10.0.0.95:6443 \
+    --tls-san=10.0.0.95
+    --disable servicelb
