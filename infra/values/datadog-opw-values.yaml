@@ -1,5 +1,6 @@
 datadog:
-  apiKey: "253c344424160f1abd9902e2bae240d7"
+  apiKeyExistingSecret: datadog-secret
+  configKeyExistingSecret: datadog-secret
   pipelineId: "46dc46ba-3def-11ee-9679-da7ad0900002"
   site: "datadoghq.com"
 
@@ -44,18 +45,9 @@ affinity:
 service:
   enabled: true
   type: "LoadBalancer"
-  externalTrafficPolicy: "Local"
-  annotations:
-    ## This example marks the service as ignored by the in-tree AWS LB controller.
-    service.beta.kubernetes.io/aws-load-balancer-type: "external"
-    ## This is the default for the AWS LB Controller but it is worthwhile to be explicit.
-    service.beta.kubernetes.io/aws-load-balancer-scheme: "internal"
-    ## NLBs should communicate directly with the OP container instead of
-    ## passing through kube-proxy. This avoids cross-availability-zone traffic
-    ## to keep things within the availability zone, which kube-proxy might change.
-    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
-
-
+  loadBalancerIP: 10.0.0.209
+  ipFamilies:	
+    - IPv4	
 ## Buffering
 ## This creates an EBS drive that can be used for buffers, which
 ## must then be configured in the sinks themselves.
