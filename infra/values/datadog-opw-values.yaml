@@ -4,16 +4,16 @@ datadog:
   pipelineId: "46dc46ba-3def-11ee-9679-da7ad0900002"
   site: "datadoghq.com"
 
-## Autoscaling
-##
-autoscaling:
-  enabled: true
-  minReplicas: 2
-  targetCPUUtilizationPercentage: 80
+# ## Autoscaling
+# ##
+# autoscaling:
+#   enabled: true
+#   minReplicas: 2
+#   targetCPUUtilizationPercentage: 80
 
-podDisruptionBudget:
-  enabled: true
-  minAvailable: 1
+# podDisruptionBudget:
+#   enabled: true
+#   minAvailable: 1
 
 ## HorizontalPodAutoscaler (HPA) requires resource requests to function,
 ## so this example configures several default values. Datadog recommends
