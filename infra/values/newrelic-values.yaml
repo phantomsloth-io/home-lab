@@ -5,8 +5,8 @@ global:
   cluster: pi-k3s-cluster
   logging: true
   newrelic-logging:
-    enabled: "true"
-    lowDataMode: "true"
+    enabled: true
+    lowDataMode: true
   kubeEvents:
     enabled: false
   newrelic-infrastructure:
