@@ -1,0 +1,26 @@
+datadog:
+  apiKeyExistingSecret: datadog-secret
+  appKeyExistingSecret: datadog-secret
+  clusterName:  pi-k3s-cluster
+  kubeStateMetricsCore:
+    enabled: true
+  liveContainerCollection:
+    enabled: true
+  orchestratorExplorer:
+    enabled: true
+  clusterAgent:
+    enabled: true
+    container_scrubbing:
+      enabled: true
+  logs:
+    enabled: true
+agents:
+  useConfigMap: true
+  customAgentConfig:
+    vector:
+      logs:
+        enabled: true
+        url: 'http://10.0.0.209:8282'
+      metrics:
+        enabled: true
+        url: 'http://10.0.0.209:8282'
