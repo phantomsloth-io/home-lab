@@ -15,16 +15,6 @@ spec:
       appSecret:
         secretName: datadog-secret
         keyName: app-key
-  agents:
-    useConfigMap: true
-    customAgentConfig:
-      vector:
-        logs:
-          enabled: true
-          url: 'http://10.0.0.209:8282'
-        metrics:
-          enabled: true
-          url: 'http://10.0.0.209:8282'
   features:
     kubeStateMetricsCore:
       enabled: true
