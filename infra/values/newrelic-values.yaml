@@ -8,7 +8,7 @@ global:
     enabled: "true"
     lowDataMode: "true"
   kubeEvents:
-    enabled: true
+    enabled: false
   newrelic-infrastructure:
     privileged: true
     enabled: true
