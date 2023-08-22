@@ -14,7 +14,7 @@ spec:
     chart: datadog-operator
     helm:
       valueFiles:
-      - $values/infra/values/datadog-opw-values.yaml
+      - $values/infra/values/datadog-operatior-values.yaml
   - repoURL: "git@github.com:Two-watch-boy/home-lab.git"
     ref: values
   
