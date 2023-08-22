@@ -1,0 +1,18 @@
+global:
+  customSecretName: newrelic-secret
+  customSecretLicenseKey: licenseKey
+  lowDataMode: true
+  cluster: pi-k3s-cluster
+  logging: true
+  newrelic-logging:
+    enabled: "true"
+    lowDataMode: "true"
+  kubeEvents:
+    enabled: true
+  newrelic-infrastructure:
+    privileged: true
+    enabled: true
+  newrelic-pixie:
+    enabled: true
+  pixie-chart:
+    enabled: true
