@@ -33,10 +33,10 @@ spec:
   override:
     nodeAgent:
       env:
-        - name: DD_HOSTNAME
-          valueFrom:
-            fieldRef:
-              fieldPath: spec.nodeName
+      - name: DD_HOSTNAME
+        valueFrom:
+          fieldRef:
+            fieldPath: spec.nodeName
       useConfigMap: true
         customAgentConfig:
           vector:
