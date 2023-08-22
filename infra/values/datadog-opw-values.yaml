@@ -145,7 +145,7 @@ pipelineConfig:
       compression: gzip
       buffer:
          type: disk
-         max_size: 257698037760
+         max_size: 4294967296
     datadog_metrics:
       type: datadog_metrics
       inputs:
@@ -154,4 +154,4 @@ pipelineConfig:
       site: "${DD_SITE}"
       buffer:
         type: disk
-        max_size: 42949672959
+        max_size: 4294967296
