@@ -37,6 +37,7 @@ spec:
         valueFrom:
           fieldRef:
             fieldPath: spec.nodeName
+    agent:
       useConfigMap: true
       customAgentConfig:
         vector:
