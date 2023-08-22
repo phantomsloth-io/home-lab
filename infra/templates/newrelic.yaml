@@ -8,37 +8,14 @@ spec:
   destination:
     namespace: newrelic
     server: https://kubernetes.default.svc
-  source:
+  sources:
+  - repoURL: https://helm-charts.newrelic.com
     chart: nri-bundle
-    repoURL: https://helm-charts.newrelic.com
     targetRevision: 5.0.25
     helm:
       releaseName: newrelic-bundle
-      parameters:
-        - name: global.customSecretName
-          value: newrelic-secret
-        - name: global.customSecretLicenseKey
-          value: licenseKey
-        - name: global.lowDataMode
-          value: "true"
-        - name: global.cluster
-          value: pi-k3s-cluster
-        - name: logging
-          value: "true"
-        - name: newrelic-logging.enabled
-          value: "true"
-        - name: newrelic-logging.lowDataMode
-          value: "true"
-        - name: kubeEvents.enabled
-          value: "true"
-        - name: newrelic-infrastructure.privileged
-          value: "true"
-        - name: newrelic-infrastructure.enabled
-          value: "true"
-        - name: newrelic-pixie.enabled
-          value: "true"
-        - name: pixie-chart.enabled
-          value: "true"
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
+      valueFiles:
+      - $values/infra/values/newrelic-values.yaml
+  - repoURL: "git@github.com:Two-watch-boy/home-lab.git"
+    ref: values
+
