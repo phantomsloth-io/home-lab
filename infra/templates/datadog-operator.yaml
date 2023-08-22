@@ -3,13 +3,18 @@ kind: Application
 metadata:
   name: datadog-operator
   namespace: argocd
+destination:
+  server: https://kubernetes.default.svc  
+  namespace: datadog
 spec:
   project: default
-  source:
-    repoURL: https://helm.datadoghq.com
+  sources:
+  - repoURL: https://helm.datadoghq.com
     targetRevision: 1.1.0
     chart: datadog-operator
-  destination:
-    server: https://kubernetes.default.svc  
-    namespace: datadog
-
+    helm:
+      valueFiles:
+      - $values/infra/values/datadog-opw-values.yaml
+  - repoURL: "git@github.com:Two-watch-boy/home-lab.git"
+    ref: values
+  
