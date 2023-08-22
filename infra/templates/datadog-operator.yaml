@@ -3,11 +3,11 @@ kind: Application
 metadata:
   name: datadog-operator
   namespace: argocd
-destination:
-  server: https://kubernetes.default.svc  
-  namespace: datadog
 spec:
   project: default
+  destination:
+    server: https://kubernetes.default.svc  
+    namespace: datadog
   sources:
   - repoURL: https://helm.datadoghq.com
     targetRevision: 1.1.0
