@@ -1,4 +1,8 @@
 server:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 50Mi
   service:   
     loadBalancerIP: 10.0.0.208
     type: LoadBalancer
