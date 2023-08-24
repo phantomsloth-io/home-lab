@@ -15,6 +15,7 @@ spec:
     chart: argo-cd
     targetRevision: 5.43.3
     helm:
-      values: $values/infra/templates/values/argocd-values.yaml
+      valueFiles: 
+      - $values/infra/templates/values/argocd-values.yaml
   - repoURL: git@github.com:Two-watch-boy/home-lab.git
     ref: values
