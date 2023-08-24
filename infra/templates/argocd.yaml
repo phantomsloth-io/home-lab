@@ -1,20 +1,20 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: argocd
-#   namespace: argocd
-#   finalizers:
-#   - resources-finalizer.argocd.argoproj.io
-# spec:
-#   destination:
-#     server: https://kubernetes.default.svc
-#     namespace: argocd
-#   project: default
-#   sources:
-#   - repoURL: https://argoproj.github.io/argo-helm
-#     chart: argo-cd
-#     targetRevision: 5.43.3
-#     helm:
-#       values: $values/infra/templates/values/argocd-values.yaml
-#   - repoURL: git@github.com:Two-watch-boy/home-lab.git
-#     ref: values
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  project: default
+  sources:
+  - repoURL: https://argoproj.github.io/argo-helm
+    chart: argo-cd
+    targetRevision: 5.43.3
+    helm:
+      values: $values/infra/templates/values/argocd-values.yaml
+  - repoURL: git@github.com:Two-watch-boy/home-lab.git
+    ref: values
