@@ -42,6 +42,8 @@ pipelineConfig:
       license_key: ${NR_KEY}
       region: us
       type: new_relic
+      healthcheck:
+        enabled: true
     datadog_logs:
       buffer:
         max_size: 4294967296
