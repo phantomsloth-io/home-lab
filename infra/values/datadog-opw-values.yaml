@@ -2,79 +2,44 @@ datadog:
   apiKeyExistingSecret: datadog-secret
   pipelineId: "46dc46ba-3def-11ee-9679-da7ad0900002"
   site: "datadoghq.com"
-
-# ## Autoscaling
-# ##
-# autoscaling:
-#   enabled: true
-#   minReplicas: 2
-#   targetCPUUtilizationPercentage: 80
-
-# podDisruptionBudget:
-#   enabled: true
-#   minAvailable: 1
-
-## HorizontalPodAutoscaler (HPA) requires resource requests to function,
-## so this example configures several default values. Datadog recommends
-## that you change the values to match the actual size of instances that
-## you are using.
 resources:
   requests:
     cpu: 1000m
     memory: 512Mi
-
-affinity:
-  ## To prevent a single datacenter from causing a complete system failure,
-  ## this example defaults to running pods in different availability zones.
-  podAntiAffinity:
-    preferredDuringSchedulingIgnoredDuringExecution:
-      - weight: 100
-        podAffinityTerm:
-          labelSelector:
-            matchExpressions:
-              - key: app.kubernetes.io/name
-                operator: In
-                values:
-                  - observability-pipelines-worker
-          topologyKey: topology.kubernetes.io/zone
-
-
-## Load Balancing
-## This example configuration avoids cross-availability-zone costs where possible.
 service:
   enabled: true
   type: "LoadBalancer"
   loadBalancerIP: 10.0.0.209
   ipFamilies:	
     - IPv4	
-## Buffering
-## This creates an EBS drive that can be used for buffers, which
-## must then be configured in the sinks themselves.
-##
-## The default drive is `io2`. Alternatively, you can also use `gp3` drives.
 persistence:
   enabled: true
   storageClassName: "local-storage"
   accessModes:
     - ReadWriteOnce
   size: 10Gi
-
-
-## Observability Pipelines (OP) Configuration
-## This is a sample configuration that Datadog recommends for
-## getting started with OP. It sets up data proxying and provides hooks
-## for your own processing steps.
+env:
+  - name: NR_KEY
+    valueFrom:
+      secretKeyRef:
+        key: nr_key
+        name: opw-secrets
+  - name: NR_ID
+    valueFrom:
+      secretKeyRef:
+        key: nr_account_id
+        name: opw-secrets
 pipelineConfig:
   sinks:
     nr_logs:
-      account_id: "4092900"
+      account_id: ${NR_ID}
       api: logs
       buffer:
         max_size: 4294967296
         type: disk
       inputs:
         - datadog_agent.logs
-      license_key: ENC[k8s_secret@newrelic/newrelic-secret/licenseKey]
+      license_key: ${NR_KEY}
       region: us
       type: new_relic
     datadog_logs:
