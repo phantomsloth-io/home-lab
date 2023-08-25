@@ -1,6 +1,6 @@
 datadog:
   apiKeyExistingSecret: datadog-secret
-  pipelineId: "46dc46ba-3def-11ee-9679-da7ad0900002"
+  pipelineId: "7cf9d82a-436c-11ee-b502-da7ad0900002"
   site: "datadoghq.com"
 resources:
   requests:
