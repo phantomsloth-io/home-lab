@@ -32,7 +32,7 @@ env:
 pipelineConfig:
   sinks:
     nr_logs:
-      account_id: ${NR_ID}
+      account_id: \"${NR_ID}\"
       api: logs
       buffer:
         max_size: 4294967296
