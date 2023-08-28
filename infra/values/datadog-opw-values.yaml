@@ -107,5 +107,5 @@ pipelineConfig:
       inputs:
         - logs_enrich
       source: |-
-        .message = del(.event)
+        .message = .event
       type: remap
