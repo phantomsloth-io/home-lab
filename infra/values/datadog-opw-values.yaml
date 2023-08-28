@@ -106,8 +106,6 @@ pipelineConfig:
     remap_event_to_message:
       inputs:
         - logs_enrich
-      metric_tag_values: full
       source: |-
-        .message = .event # add
-        del(.event)
+        .message = del(.event)
       type: remap
