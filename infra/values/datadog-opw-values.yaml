@@ -38,7 +38,7 @@ pipelineConfig:
         max_size: 4294967296
         type: disk
       inputs:
-        - datadog_agent.logs
+        - logs_finish_ddtags
       license_key: ${NR_KEY}
       region: us
       type: new_relic
