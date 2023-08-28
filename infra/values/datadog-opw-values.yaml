@@ -103,11 +103,30 @@ pipelineConfig:
         .tags.sender = "observability_pipelines_worker"
         .tags.opw_aggregator = get_hostname!()
       type: remap
-    remap_event_to_message:
+    remove_unneeded_dd_tags:
       inputs:
         - logs_enrich
+      source: |-
+        del(.ddsource)
+        del(."ddtags.container_id")
+        del(."ddtags.dirname")
+        del(."ddtags.filename")
+        del(."ddtags.image_id")
+        del(."ddtags.kube_app_instance")
+        del(."ddtags.kube_ownerref_kind")
+        del(."ddtags.kube_ownerref_name")
+        del(."ddtags.kube_qos")
+        del(."ddtags.opw_aggregator")
+        del(."ddtags.pod_phase")
+        del(."ddtags.short_image")
+        . = map_keys(., recursive: true) -> |key| { replace(key, "ddtags.", "") }
+      type: remap
+    remap_event_to_message:
+      inputs:
+        - remove_unneeded_dd_tags
       source: |-
         if !exists(.message) && exists(.event){
           .message = del(.event)
         }
       type: remap
+
