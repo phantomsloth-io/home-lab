@@ -38,7 +38,7 @@ pipelineConfig:
         max_size: 4294967296
         type: disk
       inputs:
-        - logs_finish_ddtags
+        - logs_enrich
       license_key: ${NR_KEY}
       region: us
       type: new_relic
