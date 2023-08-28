@@ -69,13 +69,13 @@ pipelineConfig:
       multiple_outputs: true
       type: datadog_agent
   transforms:
-    logs_enrich:
-      inputs:
-        - logs_remove_wrong_level
-      source: |
-        .ddtags.sender = "observability_pipelines_worker"
-        .ddtags.opw_aggregator = get_hostname!()
-      type: remap
+    # logs_enrich:
+    #   inputs:
+    #     - logs_remove_wrong_level
+    #   source: |
+    #     .ddtags.sender = "observability_pipelines_worker"
+    #     .ddtags.opw_aggregator = get_hostname!()
+    #   type: remap
     logs_finish_ddtags:
       inputs:
         - remap_event_to_message
@@ -105,20 +105,20 @@ pipelineConfig:
       type: remap
     remove_unneeded_dd_tags:
       inputs:
-        - logs_enrich
+        - logs_remove_wrong_level
       source: |-
         del(.ddsource)
-        del(."ddtags.container_id")
-        del(."ddtags.dirname")
-        del(."ddtags.filename")
-        del(."ddtags.image_id")
-        del(."ddtags.kube_app_instance")
-        del(."ddtags.kube_ownerref_kind")
-        del(."ddtags.kube_ownerref_name")
-        del(."ddtags.kube_qos")
-        del(."ddtags.opw_aggregator")
-        del(."ddtags.pod_phase")
-        del(."ddtags.short_image")
+        del(.ddtags.container_id)
+        del(.ddtags.dirname)
+        del(.ddtags.filename)
+        del(.ddtags.image_id)
+        del(.ddtags.kube_app_instance)
+        del(.ddtags.kube_ownerref_kind)
+        del(.ddtags.kube_ownerref_name)
+        del(.ddtags.kube_qos)
+        del(.ddtags.opw_aggregator)
+        del(.ddtags.pod_phase)
+        del(.ddtags.short_image)
         . = map_keys(., recursive: true) -> |key| { replace(key, "ddtags.", "") }
       type: remap
     remap_event_to_message:
