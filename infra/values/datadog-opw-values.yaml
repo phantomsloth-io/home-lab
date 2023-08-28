@@ -107,5 +107,7 @@ pipelineConfig:
       inputs:
         - logs_enrich
       source: |-
-        .message = .event
+        if !exists(.message) && exists(.event){
+          .message = del(.event)
+        }
       type: remap
