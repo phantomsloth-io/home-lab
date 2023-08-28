@@ -31,19 +31,6 @@ env:
         name: opw-secrets
 pipelineConfig:
   sinks:
-    nr_logs:
-      account_id: \"${NR_ID}\"
-      api: logs
-      buffer:
-        max_size: 4294967296
-        type: disk
-      inputs:
-        - logs_enrich
-      license_key: ${NR_KEY}
-      region: us
-      type: new_relic
-      healthcheck:
-        enabled: true
     datadog_logs:
       buffer:
         max_size: 4294967296
@@ -63,6 +50,19 @@ pipelineConfig:
         - metrics_add_dd_tags
       site: ${DD_SITE}
       type: datadog_metrics
+    nr_logs:
+      account_id: \"${NR_ID}\"
+      api: logs
+      buffer:
+        max_size: 4294967296
+        type: disk
+      healthcheck:
+        enabled: true
+      inputs:
+        - remap_event_to_message
+      license_key: ${NR_KEY}
+      region: us
+      type: new_relic
   sources:
     datadog_agent:
       address: 0.0.0.0:8282
@@ -78,7 +78,7 @@ pipelineConfig:
       type: remap
     logs_finish_ddtags:
       inputs:
-        - logs_enrich
+        - remap_event_to_message
       source: >
         .ddtags = encode_key_value!(.ddtags, key_value_delimiter: ":",
         field_delimiter: ",")
@@ -102,4 +102,12 @@ pipelineConfig:
       source: |
         .tags.sender = "observability_pipelines_worker"
         .tags.opw_aggregator = get_hostname!()
+      type: remap
+    remap_event_to_message:
+      inputs:
+        - logs_enrich
+      metric_tag_values: full
+      source: |-
+        .message = .event # add
+        del(.event)
       type: remap
