@@ -14,6 +14,7 @@ datadog:
       enabled: true
   logs:
     enabled: true
+    containerCollectAll: true
 agents:
   useConfigMap: true
   customAgentConfig:
