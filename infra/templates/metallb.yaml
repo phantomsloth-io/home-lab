@@ -5,21 +5,16 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://metallb.github.io/metallb
+  sources:
+  - repoURL: https://metallb.github.io/metallb
     targetRevision: "0.12.1"
     chart: metallb
     helm:
-      values: |
-        configInline:
-          address-pools:
-            - name: default
-              protocol: layer2
-              addresses:
-                - 10.0.0.200-10.0.0.250
+      valueFiles: 
+      - $values/infra/values/metallb-values.yaml
+  - repoURL: git@github.com:Two-watch-boy/home-lab.git
+    ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: metallb-system
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
+
