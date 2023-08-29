@@ -19,3 +19,5 @@ spec:
       - $values/infra/values/datadog-opw-values.yaml
   - repoURL: "git@github.com:Two-watch-boy/home-lab.git"
     ref: values
+  syncPolicy:
+    automated: {}
