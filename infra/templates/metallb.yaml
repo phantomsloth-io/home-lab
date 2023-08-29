@@ -10,7 +10,7 @@ spec:
     namespace: metallb-system
   sources:
   - repoURL: https://metallb.github.io/metallb
-    targetRevision: "0.12.1"
+    targetRevision: "0.13.10"
     chart: metallb
     helm:
       valueFiles: 
