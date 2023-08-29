@@ -4,7 +4,7 @@ datadog:
   site: "datadoghq.com"
 resources:
   requests:
-    cpu: 1000m
+    cpu: 250m
     memory: 512Mi
 service:
   enabled: true
