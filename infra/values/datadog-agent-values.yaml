@@ -15,7 +15,18 @@ datadog:
   logs:
     enabled: true
     containerCollectAll: true
+clusterAgent:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
 agents:
+  containers:
+    agent:
+      resources:
+        requests:
+          cpu: 500m
+          memory: 256Mi
   useConfigMap: true
   customAgentConfig:
     vector:
