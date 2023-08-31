@@ -32,6 +32,6 @@ apps:
   signoz:
     enabled: false
     sync: false
-  vector:
+  vector-agent:
     enabled: false
     sync: false
