@@ -1,8 +1,8 @@
-{{- if index .Values.apps "itsio-base" "enabled" }}
+{{- if index .Values.apps "istio-base" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: itsio-base
+  name: istio-base
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -17,10 +17,10 @@ spec:
     targetRevision: 1.19.0-rc.0
     helm:
       valueFiles: 
-      - $values/infra/values/itsio-base-values.yaml
+      - $values/infra/values/istio-base-values.yaml
   - repoURL: git@github.com:Two-watch-boy/home-lab.git
     ref: values
-  {{- if index .Values.apps "itsio-base" "sync" }}
+  {{- if index .Values.apps "istio-base" "sync" }}
   syncPolicy:
     automated: {}
   {{- end }}
