@@ -1,3 +1,4 @@
+{{- if index .Values.apps "argocd" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -19,5 +20,8 @@ spec:
       - $values/infra/values/argocd-values.yaml
   - repoURL: git@github.com:Two-watch-boy/home-lab.git
     ref: values
+  {{- if index .Values.apps "argocd" "sync" }}
   syncPolicy:
     automated: {}
+  {{- end }}
+{{- end }}
