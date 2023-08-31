@@ -2,6 +2,36 @@ cluster:
   name: "pi-k3s-cluster"
   project: default
 apps:
- root:
+  root:
     enabled: true
+    sync: false
+  argocd:
+    enabled: true
+    sync: false
+  datadog-agent-app:
+    enabled: false
+    sync: false
+  datadog-operator:
+    enabled: true
+    sync: false
+  datadog-opw:
+    enabled: true
+    sync: false
+  metallb:
+    enabled: true
+    sync: false
+  mw-kube-agent:
+    enabled: false
+    sync: false
+  newrelic:
+    enabled: false
+    sync: false
+  prometheus:
+    enabled: false
+    sync: false
+  signoz:
+    enabled: false
+    sync: false
+  vector-agent:
+    enabled: false
     sync: false
