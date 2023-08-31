@@ -1,16 +1,27 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: mw-kube-agent
-#   namespace: argocd
-#   finalizers:
-#   - resources-finalizer.argocd.argoproj.io
-# spec:
-#   destination:
-#     server: https://kubernetes.default.svc
-#     namespace: 
-#   project: default
-#   source:
-#     chart: mw-kube-agent
-#     repoURL: https://helm.middleware.io
-#     targetRevision: 0.1.2
+{{- if index .Values.apps "middleware-agent" "enabled" }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: middleware-agent
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: 
+  project: default
+  sources:
+  - repoURL: https://helm.middleware.io
+    chart: mw-kube-agent
+    targetRevision: 0.1.2
+    helm:
+      valueFiles: 
+      - $values/infra/values/middleware-agent-values.yaml
+  - repoURL: git@github.com:Two-watch-boy/home-lab.git
+    ref: values
+  {{- if index .Values.apps "middleware-agent" "sync" }}
+  syncPolicy:
+    automated: {}
+  {{- end }}
+{{- end }}
