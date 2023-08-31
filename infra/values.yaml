@@ -1,0 +1,7 @@
+cluster:
+  name: "pi-k3s-cluster"
+  project: default
+apps:
+ root:
+    enabled: true
+    sync: false
