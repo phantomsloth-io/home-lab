@@ -1,16 +1,27 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: signoz
-#   namespace: argocd
-#   finalizers:
-#   - resources-finalizer.argocd.argoproj.io
-# spec:
-#   destination:
-#     server: https://kubernetes.default.svc
-#     namespace: platform
-#   project: default
-#   source:
-#     chart: signoz
-#     repoURL: https://charts.signoz.io
-#     targetRevision: 0.8.0
+{{- if index .Values.apps "signoz" "enabled" }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: signoz
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: platform
+  project: default
+  sources:
+  - repoURL: https://charts.signoz.io
+    chart: signoz
+    targetRevision: 0.8.0
+    helm:
+      valueFiles: 
+      - $values/infra/values/signoz-values.yaml
+  - repoURL: git@github.com:Two-watch-boy/home-lab.git
+    ref: values
+  {{- if index .Values.apps "signoz" "sync" }}
+  syncPolicy:
+    automated: {}
+  {{- end }}
+{{- end }}
