@@ -1,4 +1,4 @@
-{{- if index .Values.apps "vector" "enabled" }}
+{{- if index .Values.apps "vector-agent" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -20,7 +20,7 @@ spec:
       - $values/infra/values/vector-values.yaml
   - repoURL: git@github.com:Two-watch-boy/home-lab.git
     ref: values
-  {{- if index .Values.apps "vector" "sync" }}
+  {{- if index .Values.apps "vector-agent" "sync" }}
   syncPolicy:
     automated: {}
   {{- end }}
