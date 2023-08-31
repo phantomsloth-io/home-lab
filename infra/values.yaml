@@ -15,7 +15,7 @@ apps:
     enabled: false
     sync: false
   datadog-operator:
-    enabled: true
+    enabled: false
     sync: false
   datadog-opw:
     enabled: true
