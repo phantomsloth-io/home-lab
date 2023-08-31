@@ -10,7 +10,16 @@ spec:
     server: https://kubernetes.default.svc
     namespace: vector
   project: default
-  source:
+  sources:
+  - repoURL: https://helm.vector.dev
     chart: vector
-    repoURL: https://helm.vector.dev
     targetRevision: 0.24.0
+    helm:
+      valueFiles: 
+      - $values/infra/values/vector-values.yaml
+  - repoURL: git@github.com:Two-watch-boy/home-lab.git
+    ref: values
+  syncPolicy:
+    automated: {}
+
+
