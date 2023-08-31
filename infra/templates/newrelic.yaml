@@ -15,6 +15,9 @@ spec:
     targetRevision: 5.0.25
     helm:
       releaseName: newrelic-bundle
+      values: |
+        global:
+          cluster: {{ .Values.cluster.name }}
       valueFiles:
       - $values/infra/values/newrelic-values.yaml
   - repoURL: "git@github.com:Two-watch-boy/home-lab.git"
