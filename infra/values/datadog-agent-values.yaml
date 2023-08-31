@@ -18,6 +18,9 @@ datadog:
     enabled: true
   remoteConfiguration:
     enabled: true
+  processAgent:
+    enabled: true
+    processCollection: true
 clusterAgent:
   resources:
     requests:
