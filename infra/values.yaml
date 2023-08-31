@@ -8,6 +8,9 @@ apps:
   argocd:
     enabled: true
     sync: false
+  datadog-agent:
+    enabled: true
+    sync: false
   datadog-agent-app:
     enabled: false
     sync: false
