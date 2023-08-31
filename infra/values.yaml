@@ -6,7 +6,7 @@ apps:
     enabled: true
     sync: false
   namespaces:
-    enabled: true
+    enabled: false
     sync: false
   argocd:
     enabled: true
