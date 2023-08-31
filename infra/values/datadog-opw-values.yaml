@@ -2,6 +2,8 @@ datadog:
   apiKeyExistingSecret: datadog-secret
   pipelineId: "7cf9d82a-436c-11ee-b502-da7ad0900002"
   site: "datadoghq.com"
+remote_configuration:
+  enabled: true
 resources:
   requests:
     cpu: 250m
