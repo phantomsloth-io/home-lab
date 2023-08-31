@@ -1,7 +1,6 @@
 datadog:
   apiKeyExistingSecret: datadog-secret
   appKeyExistingSecret: datadog-secret
-  clusterName:  pi-k3s-cluster
   kubeStateMetricsCore:
     enabled: true
   liveContainerCollection:
