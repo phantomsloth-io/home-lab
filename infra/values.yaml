@@ -24,10 +24,10 @@ apps:
     enabled: true
     sync: false
   istio-base:
-    enabled: true
+    enabled: false
     sync: false
   istio-discovery:
-    enabled: true
+    enabled: false
     sync: false
   metallb:
     enabled: true
