@@ -5,6 +5,9 @@ apps:
   root:
     enabled: true
     sync: false
+  namespaces:
+    enabled: true
+    sync: false
   argocd:
     enabled: true
     sync: false
