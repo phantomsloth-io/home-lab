@@ -1,0 +1,27 @@
+{{- if index .Values.apps "itsio-base" "enabled" }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: itsio-base
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-system
+  project: default
+  sources:
+  - repoURL: https://istio-release.storage.googleapis.com/charts
+    chart: base
+    targetRevision: 1.19.0-rc.0
+    helm:
+      valueFiles: 
+      - $values/infra/values/itsio-base-values.yaml
+  - repoURL: git@github.com:Two-watch-boy/home-lab.git
+    ref: values
+  {{- if index .Values.apps "itsio-base" "sync" }}
+  syncPolicy:
+    automated: {}
+  {{- end }}
+{{- end }}
