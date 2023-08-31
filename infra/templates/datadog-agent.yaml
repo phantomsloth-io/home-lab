@@ -23,6 +23,11 @@ spec:
     ref: values
   {{- if index .Values.apps "datadog-agent" "sync" }}
   syncPolicy:
+    managedNamespaceMetadata:
+      labels: # The labels to set on the application namespace
+        istio-injection: enabled
+    syncOptions:
+    - CreateNamespace=true
     automated: {}
   {{- end }}
 {{- end }}
