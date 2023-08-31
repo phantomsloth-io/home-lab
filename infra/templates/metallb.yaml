@@ -1,3 +1,4 @@
+{{- if index .Values.apps "metallb" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -17,6 +18,8 @@ spec:
       - $values/infra/values/metallb-values.yaml
   - repoURL: git@github.com:Two-watch-boy/home-lab.git
     ref: values
+  {{- if index .Values.apps "metallb" "sync" }}
   syncPolicy:
     automated: {}
-
+  {{- end }}
+{{- end }}
