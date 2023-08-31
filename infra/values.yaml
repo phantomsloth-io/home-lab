@@ -20,7 +20,7 @@ apps:
   metallb:
     enabled: true
     sync: false
-  mw-kube-agent:
+  middleware-agent:
     enabled: false
     sync: false
   newrelic:
