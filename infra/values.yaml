@@ -23,10 +23,10 @@ apps:
   datadog-opw:
     enabled: true
     sync: false
-  itsio-base:
+  istio-base:
     enabled: true
     sync: false
-  itsio-discovery:
+  istio-discovery:
     enabled: true
     sync: false
   metallb:
