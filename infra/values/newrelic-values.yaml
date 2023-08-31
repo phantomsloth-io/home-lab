@@ -2,7 +2,6 @@ global:
   customSecretName: newrelic-secret
   customSecretLicenseKey: licenseKey
   lowDataMode: true
-  cluster: pi-k3s-cluster
   logging: true
   newrelic-logging:
     enabled: true
