@@ -20,6 +20,8 @@ clusterAgent:
       cpu: 50m
       memory: 128Mi
 agents:
+  podLabels:
+    sidecar.istio.io/inject: "false"
   containers:
     agent:
       resources:
