@@ -16,6 +16,8 @@ datadog:
     containerCollectAll: true
   networkMonitoring:
     enabled: true
+  remoteConfiguration:
+    enabled: true
 clusterAgent:
   resources:
     requests:
