@@ -13,8 +13,8 @@ spec:
   project: default
   sources:
   - repoURL: https://istio-release.storage.googleapis.com/charts
-    chart: itsiod
     targetRevision: 1.19.0-rc.0
+    chart: istiod
     helm:
       valueFiles: 
       - $values/infra/values/itsio-discovery-values.yaml
