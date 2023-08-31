@@ -14,11 +14,11 @@ spec:
     targetRevision: 3.34.0
     chart: datadog
     helm:
-    values: |
-          datadog:
-            clusterName: {{ .Values.cluster.name }}
-    valueFiles:
-      - $values/infra/values/datadog-agent-values.yaml
+      values: |
+            datadog:
+              clusterName: {{ .Values.cluster.name }}
+      valueFiles:
+        - $values/infra/values/datadog-agent-values.yaml
   - repoURL: "git@github.com:Two-watch-boy/home-lab.git"
     ref: values
   {{- if index .Values.apps "datadog-agent" "sync" }}
