@@ -1,21 +1,26 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: newrelic
-#   namespace: argocd
-# spec:
-#   project: default
-#   destination:
-#     namespace: newrelic
-#     server: https://kubernetes.default.svc
-#   sources:
-#   - repoURL: https://helm-charts.newrelic.com
-#     chart: nri-bundle
-#     targetRevision: 5.0.25
-#     helm:
-#       releaseName: newrelic-bundle
-#       valueFiles:
-#       - $values/infra/values/newrelic-values.yaml
-#   - repoURL: "git@github.com:Two-watch-boy/home-lab.git"
-#     ref: values
-
+{{- if index .Values.apps "newrelic" "enabled" }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: newrelic
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    namespace: newrelic
+    server: https://kubernetes.default.svc
+  sources:
+  - repoURL: https://helm-charts.newrelic.com
+    chart: nri-bundle
+    targetRevision: 5.0.25
+    helm:
+      releaseName: newrelic-bundle
+      valueFiles:
+      - $values/infra/values/newrelic-values.yaml
+  - repoURL: "git@github.com:Two-watch-boy/home-lab.git"
+    ref: values
+  {{- if index .Values.apps "newrelic" "sync" }}
+  syncPolicy:
+    automated: {}
+  {{- end }}
+{{- end }}
