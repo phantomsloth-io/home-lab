@@ -1,1 +1,10 @@
-
+deploymentLabels:
+  ad.datadoghq.com/discovery.check_names: '["istio"]'
+  ad.datadoghq.com/discovery.init_configs: '[{}]'
+  ad.datadoghq.com/discovery.instances: |
+       [
+         {
+           "istiod_endpoint": "http://%%host%%:15014/metrics",
+           "use_openmetrics": "true"
+         }
+       ]
