@@ -10,31 +10,49 @@ repoServer:
   resources:
     requests:
       cpu: 20m
-      memory: 150Mi
+      memory: 100Mi
+    limits:
+      cpu: 50m
+      memory: 120Mi
 dex:
   resources:
     requests:
-      cpu: 10m
+      cpu: 2m
       memory: 50Mi
+    limits:
+      cpu: 5m
+      memory: 60Mi
 redis:
   resources:
     requests:
       cpu: 10m
       memory: 10Mi
+    limits:
+      cpu: 15m
+      memory: 10Mi
 applicationSet:
   resources:
     requests:
+      cpu: 5m
+      memory: 40Mi
+    limits:
       cpu: 10m
       memory: 50Mi
 notifications:
   resources:
     requests:
+      cpu: 2m
+      memory: 20Mi
+    limits:
       cpu: 5m
-      memory: 50Mi
+      memory: 30Mi
 server:
   resources:
     requests:
-      cpu: 50m
+      cpu: 10m
+      memory: 32Mi
+    limits:
+      cpu: 15m
       memory: 50Mi
   service:   
     loadBalancerIP: 10.0.0.208
