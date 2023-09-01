@@ -21,6 +21,11 @@ datadog:
   processAgent:
     enabled: true
     processCollection: true
+  securityAgent:
+    runtime:
+      enabled: true
+    compliance:
+      enabled: true
 clusterAgent:
   resources:
     requests:
