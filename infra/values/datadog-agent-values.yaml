@@ -31,6 +31,9 @@ clusterAgent:
     requests:
       cpu: 50m
       memory: 128Mi
+    limits:
+      cpu: 200m
+      memory: 1000Mi
 agents:
   podLabels:
     sidecar.istio.io/inject: "false"
@@ -40,6 +43,9 @@ agents:
         requests:
           cpu: 500m
           memory: 256Mi
+        limits:
+          cpu: 1
+          memory: 1000Mi
       env:
         - name: DD_CONTAINER_IMAGE_ENABLED
           value: "true"
