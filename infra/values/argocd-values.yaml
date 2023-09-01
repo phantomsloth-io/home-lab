@@ -33,11 +33,11 @@ repoServer:
       }
   resources:
     requests:
-      cpu: 50m
+      cpu: 100m
       memory: 100Mi
     limits:
-      cpu: 100m
-      memory: 120Mi
+      cpu: 200m
+      memory: 150Mi
 dex:
   resources:
     requests:
@@ -85,11 +85,11 @@ server:
       }  
   resources:
     requests:
-      cpu: 50m
-      memory: 50Mi
+      cpu: 100m
+      memory: 100Mi
     limits:
-      cpu: 75m
-      memory: 75Mi
+      cpu: 150m
+      memory: 150Mi
   service:   
     loadBalancerIP: 10.0.0.208
     type: LoadBalancer
