@@ -13,7 +13,7 @@ spec:
   project: default
   source:
     path: infra/
-    repoURL: git@github.com:Two-watch-boy/home-lab.git
+    repoURL: git@github.com:phantomsloth-io/home-lab.git
     targetRevision: HEAD
   {{- if index .Values.apps "root" "sync" }}
   syncPolicy:

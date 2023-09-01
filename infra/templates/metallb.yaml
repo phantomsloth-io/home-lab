@@ -16,7 +16,7 @@ spec:
     helm:
       valueFiles: 
       - $values/infra/values/metallb-values.yaml
-  - repoURL: git@github.com:Two-watch-boy/home-lab.git
+  - repoURL: git@github.com:phantomsloth-io/home-lab.git
     ref: values
   {{- if index .Values.apps "metallb" "sync" }}
   syncPolicy:

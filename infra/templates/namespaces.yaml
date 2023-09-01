@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: infra/manifests/namespaces
-    repoURL: git@github.com:Two-watch-boy/home-lab.git
+    repoURL: git@github.com:phantomsloth-io/home-lab.git
     targetRevision: HEAD
   {{- if index .Values.apps "namespaces" "sync" }}
   syncPolicy:
