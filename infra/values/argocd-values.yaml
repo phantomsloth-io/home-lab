@@ -18,10 +18,10 @@ dex:
   resources:
     requests:
       cpu: 2m
-      memory: 50Mi
+      memory: 30Mi
     limits:
-      cpu: 5m
-      memory: 60Mi
+      cpu: 4m
+      memory: 40Mi
 redis:
   resources:
     requests:
@@ -29,7 +29,7 @@ redis:
       memory: 10Mi
     limits:
       cpu: 15m
-      memory: 10Mi
+      memory: 12Mi
 applicationSet:
   resources:
     requests:
@@ -49,10 +49,10 @@ notifications:
 server:
   resources:
     requests:
-      cpu: 25m
+      cpu: 50m
       memory: 50Mi
     limits:
-      cpu: 50m
+      cpu: 75m
       memory: 75Mi
   service:   
     loadBalancerIP: 10.0.0.208
