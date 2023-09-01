@@ -35,6 +35,15 @@ agents:
         requests:
           cpu: 500m
           memory: 256Mi
+      env:
+        - name: DD_CONTAINER_IMAGE_ENABLED
+          value: "true"
+        - name: DD_SBOM_ENABLED
+          value: "true"
+        - name: DD_SBOM_CONTAINER_IMAGE_ENABLED
+          value: "true"
+        - name: DD_SBOM_HOST_ENABLED
+          value: "true"
   useConfigMap: true
   customAgentConfig:
     vector:
