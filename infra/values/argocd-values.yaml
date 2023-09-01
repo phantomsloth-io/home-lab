@@ -2,11 +2,35 @@ global:
   additionalLabels:
     sidecar.istio.io/inject: "false"
 controller:
+  podAnnotations:
+    ad.datadoghq.com/argocd-application-controller.checks: |
+      {
+        "argocd": {
+          "init_config": {},
+          "instances": [
+            {
+              "app_controller_endpoint": "http://%%host%%:8082/metrics"
+            }
+          ]
+        }
+      }
   resources:
     requests:
       cpu: 100m
       memory: 200Mi
 repoServer:
+  podAnnotations:
+    ad.datadoghq.com/argocd-repo-server.checks: |
+      {
+        "argocd": {
+          "init_config": {},
+          "instances": [
+            {
+              "repo_server_endpoint": "http://%%host%%:8084/metrics"
+            }
+          ]
+        }
+      }
   resources:
     requests:
       cpu: 50m
@@ -47,6 +71,18 @@ notifications:
       cpu: 5m
       memory: 30Mi
 server:
+  podAnnotations:
+    ad.datadoghq.com/argocd-server.checks: |
+      {
+        "argocd": {
+          "init_config": {},
+          "instances": [
+            {
+              "api_server_endpoint": "http://%%host%%:8083/metrics"
+            }
+          ]
+        }
+      }  
   resources:
     requests:
       cpu: 50m
