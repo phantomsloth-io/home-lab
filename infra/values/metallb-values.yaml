@@ -8,9 +8,9 @@ speaker:
     requests:
       cpu: 50m
       memory: 100Mi
-configInline:
-  address-pools:
-    - name: default
-      protocol: layer2
-      addresses:
-        - 10.0.0.200-10.0.0.250
+# configInline:
+#   address-pools:
+#     - name: default
+#       protocol: layer2
+#       addresses:
+#         - 10.0.0.200-10.0.0.250
