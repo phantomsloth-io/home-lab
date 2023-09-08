@@ -27,6 +27,8 @@ datadog:
       enabled: true
     compliance:
       enabled: true
+  serviceMonitoring:
+    enabled: true
 clusterAgent:
   resources:
     requests:
