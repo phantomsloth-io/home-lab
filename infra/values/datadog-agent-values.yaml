@@ -29,6 +29,8 @@ datadog:
       enabled: true
   serviceMonitoring:
     enabled: true
+  apm:
+    portEnabled: true
 clusterAgent:
   resources:
     requests:
