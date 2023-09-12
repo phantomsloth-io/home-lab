@@ -1,5 +1,5 @@
 containers:
-  labels: []
+  labels: {}
   annotations: []
   envFrom:
     secretRef:
