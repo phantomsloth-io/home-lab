@@ -1,4 +1,4 @@
-{{- if index .Values.infra "root" "enabled" }}
+{{- if index .Values.infra "infra" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -15,7 +15,7 @@ spec:
     path: infra/
     repoURL: git@github.com:phantomsloth-io/home-lab.git
     targetRevision: HEAD
-  {{- if index .Values.infra "root" "sync" }}
+  {{- if index .Values.infra "infra" "sync" }}
   syncPolicy:
     automated: {}
   {{- end }}
