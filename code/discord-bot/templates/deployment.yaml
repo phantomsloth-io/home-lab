@@ -34,9 +34,9 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           envFrom:
             - secretRef:
-                name: {{ .Values.containers.envFrom.secretRef.discordSecret | default discordsecret }}
+                name: {{ .Values.containers.envFrom.secretRef.discordSecret | default "discordSecret" }}
             - secretRef: 
-                name: {{ .Values.containers.envFrom.secretRef.nasaSecret | default nasaSecret }}
+                name: {{ .Values.containers.envFrom.secretRef.nasaSecret | default "nasaSecret" }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
