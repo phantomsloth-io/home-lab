@@ -9,7 +9,8 @@ metadata:
     tags.datadoghq.com/env: {{ .Values.datadog.labels.env }}
     tags.datadoghq.com/service: {{ .Chart.Name }}
     tags.datadoghq.com/version: {{ .Chart.Version }}
-  annotations: {{ .Values.containers.annotations | nindent 4 }}
+  annotations: 
+    {{ toYaml .Values.container.annotations | indent 4 }}
 spec:
   replicas: {{ .Values.replicas }}
   template:
