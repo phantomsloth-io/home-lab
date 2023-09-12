@@ -3,9 +3,11 @@ cluster:
   project: default
 apps:
   apps:
-    discord-bot:
-      enabled: false
-      sync: false
-    hello-world-nginx:
-      enabled: false
-      sync: false
+    enabled: true
+    sync: false
+  discord-bot:
+    enabled: false
+    sync: false
+  hello-world-nginx:
+    enabled: false
+    sync: false
