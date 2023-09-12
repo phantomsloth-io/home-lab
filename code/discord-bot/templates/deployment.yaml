@@ -1,51 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: discord-bot
-  labels:
-    {{- include "discord-bot.labels" . | nindent 4 }}
+  name: {{ Chart.Name }}
+  labels: {{ Values.containers.labels | nindent 4 }}
+    tags.datadoghq.com/env: {{ Values.datadog.labels.env }}
+    tags.datadoghq.com/service: {{ Chart.Name }}
+    tags.datadoghq.com/version: {{ Chart.version }}
+  annotations: {{ Values.containers.annotations | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
-  {{- end }}
-  selector:
-    matchLabels:
-      {{- include "discord-bot.selectorLabels" . | nindent 6 }}
+  replicas: {{ Values.replicas }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      labels:
-        {{- include "discord-bot.selectorLabels" . | nindent 8 }}
+      labels: {{ Values.containers.labels | nindent 8 }}
+        tags.datadoghq.com/env: {{ Values.datadog.labels.env }}
+        tags.datadoghq.com/service: {{ Chart.Name }}
+        tags.datadoghq.com/version: {{ Chart.version }}
     spec:
-      {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+      - name: {{ Values.imagePullSecrets.secret }}
       containers:
-        - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-          envFrom:
-            - secretRef:
-                name: {{ .Values.containers.envFrom.secretRef.discordSecret | default "discordSecret" }}
-            - secretRef: 
-                name: {{ .Values.containers.envFrom.secretRef.nasaSecret | default "nasaSecret" }}
-      {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+      — name: {{ Chart.Name }}
+        image: {{ Values.image }}
+        envFrom:
+        - secretRef:
+          name: {{ Values.envFrom.secretRef.discordSecret }}
+        - secretRef:
+          name: {{ Values.envFrom.secretRef.nasaSecret }}
+            

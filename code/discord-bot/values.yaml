@@ -1,42 +1,18 @@
-# Default values for discord-bot.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-replicaCount: 1
-
-image:
-  repository: ghcr.io/phantomsloth-io/discord-bot
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: latest
-
-imagePullSecrets:
-- dockerconfigjson-github-com
-nameOverride: ""
-fullnameOverride: ""
-
 containers:
+  labels: []
+  annotations: []
   envFrom:
     secretRef:
       discordSecret: discordSecret
       nasaSecret: nasaSecret
 
-podAnnotations: {}
+replicas: 1
 
-resources: {}
-  # We usually recom  mend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+image: ghcr.io/phantomsloth-io/discord-bot:main
 
-nodeSelector: {}
+imagePullSecrets:
+  secret: discordSecret
 
-tolerations: []
-
-affinity: {}
+datadog:
+  labels:
+    env: Prod
