@@ -2,7 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Chart.Name }}
-  labels: {{ .Values.containers.labels | nindent 4 }}
+  labels: 
+{{- range $name, $value := .Values.containers.labels }}
+    {{ $name | quote }}: {{ $value | quote }}
+{{- end -}}
     tags.datadoghq.com/env: {{ .Values.datadog.labels.env }}
     tags.datadoghq.com/service: {{ .Chart.Name }}
     tags.datadoghq.com/version: {{ .Chart.version }}
@@ -11,7 +14,10 @@ spec:
   replicas: {{ .Values.replicas }}
   template:
     metadata:
-      labels: {{ .Values.containers.labels | nindent 8 }}
+      labels: 
+{{- range $name, $value := .Values.containers.labels }}
+        {{ $name | quote }}: {{ $value | quote }}
+{{- end -}}
         tags.datadoghq.com/env: {{ .Values.datadog.labels.env }}
         tags.datadoghq.com/service: {{ .Chart.Name }}
         tags.datadoghq.com/version: {{ .Chart.version }}
