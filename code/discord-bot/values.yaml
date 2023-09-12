@@ -1,6 +1,4 @@
 containers:
-  labels: {}
-  annotations: []
   envFrom:
     secretRef:
       discordSecret: discord-secret
