@@ -10,7 +10,7 @@ metadata:
     tags.datadoghq.com/service: {{ .Chart.Name }}
     tags.datadoghq.com/version: {{ .Chart.Version }}
   annotations: 
-    {{ toYaml .Values.container.annotations | indent 4 }}
+    {{ toYaml .Values.containers.annotations | indent 4 }}
 spec:
   replicas: {{ .Values.replicas }}
   template:
