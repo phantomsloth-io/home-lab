@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "discord-bot.fullname" . }}
+  name: discord-bot
   labels:
     {{- include "discord-bot.labels" . | nindent 4 }}
 spec:
