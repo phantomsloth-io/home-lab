@@ -1,4 +1,4 @@
-name: Create and publish a Docker image
+name: Build Discord Bot
 
 # Configures this workflow to run every time a change is pushed to the branch called `release`.
 on:
@@ -8,7 +8,7 @@ on:
 # Defines two custom environment variables for the workflow. These are used for the Container registry domain, and a name for the Docker image that this workflow builds.
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: discord-bot
 
 # There is a single job in this workflow. It's configured to run on the latest available version of Ubuntu.
 jobs:
@@ -43,7 +43,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
         with:
-          context: apps/discord-bot/
+          context: ./apps/discord-bot/
+          file: ./apps/discord-bot/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
