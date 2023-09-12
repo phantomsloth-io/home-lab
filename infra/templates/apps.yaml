@@ -1,0 +1,22 @@
+{{- if index .Values.apps "apps" "enabled" }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apps
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  project: default
+  source:
+    path: apps/
+    repoURL: git@github.com:phantomsloth-io/home-lab.git
+    targetRevision: HEAD
+  {{- if index .Values.apps "apps" "sync" }}
+  syncPolicy:
+    automated: {}
+  {{- end }}
+{{- end }}
