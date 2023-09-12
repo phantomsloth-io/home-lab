@@ -15,11 +15,14 @@ metadata:
     {{- end }}
 spec:
   replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
   template:
     metadata:
       labels: 
-        {{- if .Values.container.labels }}
-{{ toYaml .Values.container.labels | indent 8 }}
+        {{- if .Values.containers.labels }}
+{{ toYaml .Values.containers.labels | indent 8 }}
         {{- end }}
         tags.datadoghq.com/env: {{ .Values.datadog.labels.env }}
         tags.datadoghq.com/service: {{ .Chart.Name }}
@@ -32,7 +35,7 @@ spec:
         image: {{ .Values.image }}
         envFrom:
         - secretRef:
-          name: {{ .Values.containerSecrets.discordSecret }}
+          name: {{ .Values.containers.secrets.discordSecret }}
         - secretRef:
-          name: {{ .Values.containerSecrets.nasaSecret }}
+          name: {{ .Values.containers.secrets.nasaSecret }}
             

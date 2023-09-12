@@ -4,7 +4,7 @@ deployment:
 containers:
   labels: []
   annotations: {}
-  containerSecrets:
+  secrets:
     discordSecret: discord-secret
     nasaSecret: nasa-secret
 
