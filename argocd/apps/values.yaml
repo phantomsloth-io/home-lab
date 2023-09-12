@@ -6,7 +6,7 @@ apps:
     enabled: true
     sync: false
   discord-bot:
-    enabled: false
+    enabled: true
     sync: false
   hello-world-nginx:
     enabled: false
