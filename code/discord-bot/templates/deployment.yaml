@@ -30,7 +30,7 @@ spec:
         image: {{ .Values.image }}
         envFrom:
         - secretRef:
-          name: {{ .Values.container-secrets.discordSecret }}
+          name: {{ .Values.containerSecrets.discordSecret }}
         - secretRef:
-          name: {{ .Values.container-secrets.nasaSecret }}
+          name: {{ .Values.containerSecrets.nasaSecret }}
             
