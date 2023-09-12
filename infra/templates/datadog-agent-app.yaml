@@ -1,4 +1,4 @@
-{{- if index .Values.apps "datadog-agent-app" "enabled" }}
+{{- if index .Values.infra "datadog-agent-app" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -15,7 +15,7 @@ spec:
     path: infra/manifests/datadog
     repoURL: git@github.com:phantomsloth-io/home-lab.git
     targetRevision: HEAD
-  {{- if index .Values.apps "datadog-agent-app" "sync" }}
+  {{- if index .Values.infra "datadog-agent-app" "sync" }}
   syncPolicy:
     automated: {}
   {{- end }}

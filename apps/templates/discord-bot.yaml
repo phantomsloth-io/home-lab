@@ -1,8 +1,8 @@
-{{- if index .Values.infra "datadog-opw" "enabled" }}
+{{- if index .Values.apps "discord-bot" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: datadog-opw
+  name: discord-bot
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -12,15 +12,15 @@ spec:
     namespace: datadog
   project: default
   sources:
-  - repoURL: https://helm.datadoghq.com
-    chart: observability-pipelines-worker
+  - repoURL: "git@github.com:phantomsloth-io/home-lab.git"
+    chart: code/discord-bot
     targetRevision: 1.3.1
     helm:
       valueFiles:
-      - $values/infra/values/datadog-opw-values.yaml
+      - $values/apps/values/discord-bot-values.yaml
   - repoURL: "git@github.com:phantomsloth-io/home-lab.git"
     ref: values
-  {{- if index .Values.infra "datadog-opw" "sync" }}
+  {{- if index .Values.apps "discord-bot" "sync" }}
   syncPolicy:
     automated: {}
   {{- end }}

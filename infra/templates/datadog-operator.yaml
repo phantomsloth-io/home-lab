@@ -1,4 +1,4 @@
-{{- if index .Values.apps "datadog-operator" "enabled" }}
+{{- if index .Values.infra "datadog-operator" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -18,7 +18,7 @@ spec:
       - $values/infra/values/datadog-operator-values.yaml
   - repoURL: "git@github.com:phantomsloth-io/home-lab.git"
     ref: values
-  {{- if index .Values.apps "datadog-operator" "sync" }}
+  {{- if index .Values.infra "datadog-operator" "sync" }}
   syncPolicy:
     automated: {}
   {{- end }}

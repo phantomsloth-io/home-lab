@@ -1,4 +1,4 @@
-{{- if index .Values.apps "namespaces" "enabled" }}
+{{- if index .Values.infra "namespaces" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -14,7 +14,7 @@ spec:
     path: infra/manifests/namespaces
     repoURL: git@github.com:phantomsloth-io/home-lab.git
     targetRevision: HEAD
-  {{- if index .Values.apps "namespaces" "sync" }}
+  {{- if index .Values.infra "namespaces" "sync" }}
   syncPolicy:
     automated: {}
   {{- end }}

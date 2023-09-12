@@ -1,4 +1,4 @@
-{{- if index .Values.apps "istio-base" "enabled" }}
+{{- if index .Values.infra "istio-base" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -20,7 +20,7 @@ spec:
       - $values/infra/values/istio-base-values.yaml
   - repoURL: git@github.com:phantomsloth-io/home-lab.git
     ref: values
-  {{- if index .Values.apps "istio-base" "sync" }}
+  {{- if index .Values.infra "istio-base" "sync" }}
   syncPolicy:
     automated: {}
   {{- end }}

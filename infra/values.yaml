@@ -1,8 +1,8 @@
 cluster:
   name: "pi-k3s-cluster"
   project: default
-apps:
-  root:
+infra:
+  infra:
     enabled: true
     sync: false
   namespaces:

@@ -1,4 +1,4 @@
-{{- if index .Values.apps "prometheus" "enabled" }}
+{{- if index .Values.infra "prometheus" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -19,7 +19,7 @@ spec:
           enabled: false
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 15.6.0
-  {{- if index .Values.apps "prometheus" "sync" }}
+  {{- if index .Values.infra "prometheus" "sync" }}
   syncPolicy:
     automated: {}
   {{- end }}

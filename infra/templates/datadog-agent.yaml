@@ -1,4 +1,4 @@
-{{- if index .Values.apps "datadog-agent" "enabled" }}
+{{- if index .Values.infra "datadog-agent" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -21,7 +21,7 @@ spec:
         - $values/infra/values/datadog-agent-values.yaml
   - repoURL: "git@github.com:phantomsloth-io/home-lab.git"
     ref: values
-  {{- if index .Values.apps "datadog-agent" "sync" }}
+  {{- if index .Values.infra "datadog-agent" "sync" }}
   syncPolicy:
     managedNamespaceMetadata:
       labels: # The labels to set on the application namespace

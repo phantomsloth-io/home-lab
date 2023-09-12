@@ -1,0 +1,11 @@
+cluster:
+  name: "pi-k3s-cluster"
+  project: default
+apps:
+  apps:
+    discord-bot:
+      enabled: true
+      sync: false
+    hello-world-nginx:
+      enabled: false
+      sync: false
