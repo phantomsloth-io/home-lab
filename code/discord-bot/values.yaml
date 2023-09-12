@@ -2,15 +2,15 @@ containers:
   labels: []
   annotations: {}
   containerSecrets:
-      discordSecret: discord-secret
-      nasaSecret: nasa-secret
+    discordSecret: discord-secret
+    nasaSecret: nasa-secret
 
 replicas: 1
 
 image: ghcr.io/phantomsloth-io/discord-bot:main
 
 imagePullSecrets:
-  secret: discordSecret
+  secret: dockerconfigjson-github-com
 
 datadog:
   labels:
