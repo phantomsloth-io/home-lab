@@ -3,22 +3,24 @@ kind: Deployment
 metadata:
   name: {{ .Chart.Name }}
   labels: 
-{{- range $name, $value := .Values.containers.labels }}
-    {{ $name | quote }}: {{ $value | quote }}
-{{- end -}}
+    {{- if .Values.deployment.labels }}
+{{ toYaml .Values.deployment.labels | indent 4 }}
+    {{- end }}
     tags.datadoghq.com/env: {{ .Values.datadog.labels.env }}
     tags.datadoghq.com/service: {{ .Chart.Name }}
     tags.datadoghq.com/version: {{ .Chart.Version }}
   annotations: 
-    {{ toYaml .Values.containers.annotations | indent 4 }}
+    {{- if .Values.deployment.annotations }}
+{{ tpl (toYaml .Values.deployment.annotations) . | indent 8 }}
+    {{- end }}
 spec:
   replicas: {{ .Values.replicas }}
   template:
     metadata:
       labels: 
-{{- range $name, $value := .Values.containers.labels }}
-        {{ $name | quote }}: {{ $value | quote }}
-{{- end -}}
+        {{- if .Values.container.labels }}
+{{ toYaml .Values.container.labels | indent 8 }}
+        {{- end }}
         tags.datadoghq.com/env: {{ .Values.datadog.labels.env }}
         tags.datadoghq.com/service: {{ .Chart.Name }}
         tags.datadoghq.com/version: {{ .Chart.Version }}
