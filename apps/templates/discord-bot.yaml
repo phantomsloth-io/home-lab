@@ -9,7 +9,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: datadog
+    namespace: discord-bot
   project: default
   sources:
   - repoURL: "git@github.com:phantomsloth-io/home-lab.git"
