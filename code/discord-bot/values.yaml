@@ -3,8 +3,8 @@ containers:
   annotations: []
   envFrom:
     secretRef:
-      discordSecret: discordSecret
-      nasaSecret: nasaSecret
+      discordSecret: discord-secret
+      nasaSecret: nasa-secret
 
 replicas: 1
 
