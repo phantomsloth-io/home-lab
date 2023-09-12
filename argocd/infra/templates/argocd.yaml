@@ -1,26 +1,26 @@
-{{- if index .Values.infra "middleware-agent" "enabled" }}
+{{- if index .Values.infra "argocd" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: middleware-agent
+  name: argocd
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: 
+    namespace: argocd
   project: default
   sources:
-  - repoURL: https://helm.middleware.io
-    chart: mw-kube-agent
-    targetRevision: 0.1.2
+  - repoURL: https://argoproj.github.io/argo-helm
+    chart: argo-cd
+    targetRevision: 5.43.3
     helm:
       valueFiles: 
-      - $values/infra/values/middleware-agent-values.yaml
+      - $values/argocd/infra/values/argocd-values.yaml
   - repoURL: git@github.com:phantomsloth-io/home-lab.git
     ref: values
-  {{- if index .Values.infra "middleware-agent" "sync" }}
+  {{- if index .Values.infra "argocd" "sync" }}
   syncPolicy:
     automated: {}
   {{- end }}

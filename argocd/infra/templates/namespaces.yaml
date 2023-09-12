@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: infra/manifests/namespaces
+    path: argocd/infra/manifests/namespaces
     repoURL: git@github.com:phantomsloth-io/home-lab.git
     targetRevision: HEAD
   {{- if index .Values.infra "namespaces" "sync" }}

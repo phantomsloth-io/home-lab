@@ -1,26 +1,26 @@
-{{- if index .Values.infra "istio-discovery" "enabled" }}
+{{- if index .Values.infra "signoz" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: istio-discovery
+  name: signoz
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: istio-system
+    namespace: platform
   project: default
   sources:
-  - repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.19.0-rc.0
-    chart: istiod
+  - repoURL: https://charts.signoz.io
+    chart: signoz
+    targetRevision: 0.8.0
     helm:
       valueFiles: 
-      - $values/infra/values/istio-discovery-values.yaml
+      - $values/argocd/infra/values/signoz-values.yaml
   - repoURL: git@github.com:phantomsloth-io/home-lab.git
     ref: values
-  {{- if index .Values.infra "istio-discovery" "sync" }}
+  {{- if index .Values.infra "signoz" "sync" }}
   syncPolicy:
     automated: {}
   {{- end }}

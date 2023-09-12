@@ -18,7 +18,7 @@ spec:
             datadog:
               clusterName: {{ .Values.cluster.name }}
       valueFiles:
-        - $values/infra/values/datadog-agent-values.yaml
+        - $values/argocd/infra/values/datadog-agent-values.yaml
   - repoURL: "git@github.com:phantomsloth-io/home-lab.git"
     ref: values
   {{- if index .Values.infra "datadog-agent" "sync" }}

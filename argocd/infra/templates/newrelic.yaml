@@ -19,7 +19,7 @@ spec:
         global:
           cluster: {{ .Values.cluster.name }}
       valueFiles:
-      - $values/infra/values/newrelic-values.yaml
+      - $values/argocd/infra/values/newrelic-values.yaml
   - repoURL: "git@github.com:phantomsloth-io/home-lab.git"
     ref: values
   {{- if index .Values.infra "newrelic" "sync" }}

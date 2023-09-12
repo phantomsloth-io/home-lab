@@ -1,26 +1,26 @@
-{{- if index .Values.infra "vector-agent" "enabled" }}
+{{- if index .Values.infra "istio-base" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vector-agent
+  name: istio-base
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: vector
+    namespace: istio-system
   project: default
   sources:
-  - repoURL: https://helm.vector.dev
-    chart: vector
-    targetRevision: 0.24.0
+  - repoURL: https://istio-release.storage.googleapis.com/charts
+    chart: base
+    targetRevision: 1.19.0-rc.0
     helm:
       valueFiles: 
-      - $values/infra/values/vector-values.yaml
+      - $values/argocd/infra/values/istio-base-values.yaml
   - repoURL: git@github.com:phantomsloth-io/home-lab.git
     ref: values
-  {{- if index .Values.infra "vector-agent" "sync" }}
+  {{- if index .Values.infra "istio-base" "sync" }}
   syncPolicy:
     automated: {}
   {{- end }}

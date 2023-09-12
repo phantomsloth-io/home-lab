@@ -1,8 +1,8 @@
-{{- if index .Values.infra "infra" "enabled" }}
+{{- if index .Values.apps "apps" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infra
+  name: apps
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -12,10 +12,10 @@ spec:
     namespace: default
   project: default
   source:
-    path: infra/
+    path: argocd/apps/
     repoURL: git@github.com:phantomsloth-io/home-lab.git
     targetRevision: HEAD
-  {{- if index .Values.infra "infra" "sync" }}
+  {{- if index .Values.apps "apps" "sync" }}
   syncPolicy:
     automated: {}
   {{- end }}

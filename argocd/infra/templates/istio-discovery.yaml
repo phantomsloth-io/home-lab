@@ -1,8 +1,8 @@
-{{- if index .Values.infra "istio-base" "enabled" }}
+{{- if index .Values.infra "istio-discovery" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: istio-base
+  name: istio-discovery
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -13,14 +13,14 @@ spec:
   project: default
   sources:
   - repoURL: https://istio-release.storage.googleapis.com/charts
-    chart: base
     targetRevision: 1.19.0-rc.0
+    chart: istiod
     helm:
       valueFiles: 
-      - $values/infra/values/istio-base-values.yaml
+      - $values/argocd/infra/values/istio-discovery-values.yaml
   - repoURL: git@github.com:phantomsloth-io/home-lab.git
     ref: values
-  {{- if index .Values.infra "istio-base" "sync" }}
+  {{- if index .Values.infra "istio-discovery" "sync" }}
   syncPolicy:
     automated: {}
   {{- end }}

@@ -1,21 +1,21 @@
-{{- if index .Values.infra "datadog-agent-app" "enabled" }}
+{{- if index .Values.infra "infra" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: datadog-agent
+  name: infra
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: datadog
+    namespace: default
   project: default
   source:
-    path: infra/manifests/datadog
+    path: argocd/infra/
     repoURL: git@github.com:phantomsloth-io/home-lab.git
     targetRevision: HEAD
-  {{- if index .Values.infra "datadog-agent-app" "sync" }}
+  {{- if index .Values.infra "infra" "sync" }}
   syncPolicy:
     automated: {}
   {{- end }}
