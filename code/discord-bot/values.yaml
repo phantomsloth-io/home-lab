@@ -1,8 +1,7 @@
 containers:
   labels: []
   annotations: {}
-  envFrom:
-    secretRef:
+  container-secrets:
       discordSecret: discord-secret
       nasaSecret: nasa-secret
 
