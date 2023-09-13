@@ -25,6 +25,7 @@ spec:
         {{- if .Values.containers.labels }}
 {{ toYaml .Values.containers.labels | indent 8 }}
         {{- end }}
+        app: {{ .Chart.Name }}
         tags.datadoghq.com/env: {{ .Values.datadog.labels.env }}
         tags.datadoghq.com/service: {{ .Chart.Name }}
         tags.datadoghq.com/version: {{ .Chart.Version }}
