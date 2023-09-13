@@ -29,6 +29,9 @@ infra:
   istio-discovery:
     enabled: false
     sync: false
+  kubeshark:
+    enabled: true
+    sync: false
   metallb:
     enabled: true
     sync: false
