@@ -178,6 +178,7 @@ poetry.toml
 pyrightconfig.json
 
 # User Defined
-apps/discord-bot/test.ini
+
 .vscode
-code/discord-bot/test.ini
+*/test.ini
+*test.ini
