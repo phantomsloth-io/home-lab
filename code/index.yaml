@@ -1,0 +1,13 @@
+apiVersion: v1
+entries:
+  discord-bot:
+  - apiVersion: v2
+    created: "2023-09-12T17:07:19.049027-07:00"
+    description: The Phantomsloth.io Discord-bot
+    digest: 9e57b3e468042c576f610a81977e26d61618a73b198e346908852baaf7207f77
+    name: discord-bot
+    type: application
+    urls:
+    - discord-bot-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-09-12T17:07:19.048556-07:00"
