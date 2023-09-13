@@ -5,8 +5,10 @@ containers:
   labels: []
   annotations: {}
   secrets:
-    discordSecret: discord-secret
-    nasaSecret: nasa-secret
+  - secretRef: 
+    name: discord-secret
+  - secretRef: 
+    name: nasa-secret
 
 replicas: 1
 
