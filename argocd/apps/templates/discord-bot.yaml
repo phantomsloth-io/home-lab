@@ -12,14 +12,13 @@ spec:
     namespace: discord-bot
   project: default
   sources:
-  - repoURL: "git@github.com:phantomsloth-io/home-lab.git"
+  - repoURL: 'https://github.com/phantomsloth-io/home-lab.git'
     path: code/discord-bot
-    chart: discord-bot
-    targetRevision: 0.1.0
+    targetRevision: HEAD
     helm:
       valueFiles:
-      - $values/argocd/code/discord-bot/values.yaml
-  - repoURL: "git@github.com:phantomsloth-io/home-lab.git"
+        - $values/code/discord-bot/values.yaml
+  - repoURL: 'git@github.com:phantomsloth-io/home-lab.git'
     ref: values
   {{- if index .Values.apps "discord-bot" "sync" }}
   syncPolicy:
