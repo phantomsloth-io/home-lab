@@ -33,9 +33,7 @@ spec:
       containers:
       - name: {{ .Chart.Name }}
         image: {{ .Values.image }}
+        {{- with .Values.containers.secrets }}
         envFrom:
-        - secretRef:
-          name: {{ .Values.containers.secrets.discordSecret }}
-        - secretRef:
-          name: {{ .Values.containers.secrets.nasaSecret }}
-            
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
