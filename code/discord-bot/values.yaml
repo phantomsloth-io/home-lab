@@ -14,6 +14,8 @@ replicas: 1
 
 image: ghcr.io/phantomsloth-io/discord-bot:main
 
+pullPolicy: Always
+
 imagePullSecrets:
   secret: dockerconfigjson-github-com
 
