@@ -35,7 +35,7 @@ spec:
       containers:
       - name: {{ .Chart.Name }}
         image: {{ .Values.image }}
-        imagePullPolicy: {{ .Values.pullPolicy }}
+        imagePullPolicy: {{ .Values.imagePullPolicy }}
         {{- with .Values.containers.secrets }}
         envFrom:
           {{- toYaml . | nindent 10 }}
