@@ -6,6 +6,7 @@ metadata:
     {{- if .Values.deployment.labels }}
 {{ toYaml .Values.deployment.labels | indent 4 }}
     {{- end }}
+    app: {{ .Chart.Name }}
     tags.datadoghq.com/env: {{ .Values.datadog.labels.env }}
     tags.datadoghq.com/service: {{ .Chart.Name }}
     tags.datadoghq.com/version: {{ .Chart.Version }}
