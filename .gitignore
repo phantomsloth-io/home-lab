@@ -180,3 +180,4 @@ pyrightconfig.json
 # User Defined
 apps/discord-bot/test.ini
 .vscode
+code/discord-bot/test.ini
