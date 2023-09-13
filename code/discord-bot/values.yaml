@@ -6,9 +6,9 @@ containers:
   annotations: {}
   secrets:
   - secretRef: 
-    name: discord-secret
+      name: discord-secret
   - secretRef: 
-    name: nasa-secret
+      name: nasa-secret
 
 replicas: 1
 
