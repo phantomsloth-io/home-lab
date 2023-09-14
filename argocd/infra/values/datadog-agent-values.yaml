@@ -31,6 +31,7 @@ datadog:
     enabled: true
   apm:
     portEnabled: true
+    socketEnabled: false
 clusterAgent:
   admissionController:
     enabled: true
@@ -43,6 +44,11 @@ clusterAgent:
       cpu: 200m
       memory: 1000Mi
 agents:
+  tolerations:
+  - key: "spotinst.io/node-lifecycle"
+    operator: "Equal"
+    value: "od"
+    effect: "NoSchedule"
   podLabels:
     sidecar.istio.io/inject: "false"
   containers:
