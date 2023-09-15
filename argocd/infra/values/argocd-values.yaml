@@ -16,11 +16,11 @@ controller:
       }
   resources:
     requests:
-      cpu: 200m
-      memory: 200Mi
-    limits:
-      cpu: 250m
+      cpu: 300m
       memory: 250Mi
+    limits:
+      cpu: 350m
+      memory: 300Mi
 repoServer:
   podAnnotations:
     ad.datadoghq.com/argocd-repo-server.checks: |
