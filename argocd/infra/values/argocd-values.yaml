@@ -18,9 +18,6 @@ controller:
     requests:
       cpu: 300m
       memory: 250Mi
-    limits:
-      cpu: 350m
-      memory: 300Mi
 repoServer:
   podAnnotations:
     ad.datadoghq.com/argocd-repo-server.checks: |
@@ -38,41 +35,26 @@ repoServer:
     requests:
       cpu: 100m
       memory: 100Mi
-    limits:
-      cpu: 200m
-      memory: 150Mi
 dex:
   resources:
     requests:
       cpu: 5m
       memory: 50Mi
-    limits:
-      cpu: 10m
-      memory: 75Mi
 redis:
   resources:
     requests:
       cpu: 15m
       memory: 10Mi
-    limits:
-      cpu: 20m
-      memory: 15Mi
 applicationSet:
   resources:
     requests:
       cpu: 10m
       memory: 50Mi
-    limits:
-      cpu: 15m
-      memory: 75Mi
 notifications:
   resources:
     requests:
       cpu: 10m
       memory: 50Mi
-    limits:
-      cpu: 15m
-      memory: 75Mi
 server:
   podAnnotations:
     ad.datadoghq.com/argocd-server.checks: |
@@ -90,9 +72,6 @@ server:
     requests:
       cpu: 100m
       memory: 100Mi
-    limits:
-      cpu: 150m
-      memory: 150Mi
   service:   
     loadBalancerIP: 10.0.0.208
     type: LoadBalancer
