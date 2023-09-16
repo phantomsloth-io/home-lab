@@ -94,7 +94,7 @@ agents:
     vector:
       logs:
         enabled: true
-        url: 'http://10.0.0.209:8282'
+        url: 'http://10.0.0.239:8282'
       metrics:
         enabled: true
-        url: 'http://10.0.0.209:8282'
+        url: 'http://10.0.0.239:8282'
