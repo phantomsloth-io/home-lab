@@ -1,3 +1,3 @@
 service:
   type: loadBalancer
-  loadBalancerIP: 10.0.0.210
+  loadBalancerIP: 10.0.0.240
