@@ -73,5 +73,5 @@ server:
       cpu: 100m
       memory: 100Mi
   service:   
-    loadBalancerIP: 10.0.0.208
+    loadBalancerIP: 10.0.0.238
     type: LoadBalancer
