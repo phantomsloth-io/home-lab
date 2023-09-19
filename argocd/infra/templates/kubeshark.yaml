@@ -11,15 +11,15 @@ spec:
     server: https://kubernetes.default.svc
     namespace: kubeshark
   project: default
-  sources:
-  - repoURL: https://helm.kubeshark.co
+  source:
+    repoURL: https://helm.kubeshark.co
     chart: kubeshark
     targetRevision: 50.2.0
-    helm:
-      valueFiles: 
-      - $values/argocd/infra/values/kubeshark-values.yaml
-  - repoURL: git@github.com:phantomsloth-io/home-lab.git
-    ref: values
+  #   helm:
+  #     valueFiles: 
+  #     - $values/argocd/infra/values/kubeshark-values.yaml
+  # - repoURL: git@github.com:phantomsloth-io/home-lab.git
+  #   ref: values
   {{- if index .Values.infra "kubeshark" "sync" }}
   syncPolicy:
     automated: {}
