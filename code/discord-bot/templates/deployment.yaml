@@ -10,6 +10,7 @@ metadata:
     tags.datadoghq.com/env: {{ .Values.datadog.labels.env }}
     tags.datadoghq.com/service: {{ .Chart.Name }}
     tags.datadoghq.com/version: {{ .Chart.Version }}
+    admission.datadoghq.com/enabled: "true"
   annotations: 
     {{- if .Values.deployment.annotations }}
 {{ tpl (toYaml .Values.deployment.annotations) . | indent 8 }}
