@@ -1,3 +1,4 @@
+fullnameOverride: datadog-testing
 targetSystem: "linux"
 datadog:
   apiKeyExistingSecret: datadog-secret
