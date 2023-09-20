@@ -30,7 +30,7 @@ infra:
     enabled: false
     sync: false
   kubeshark:
-    enabled: true
+    enabled: false
     sync: false
   metallb:
     enabled: true
