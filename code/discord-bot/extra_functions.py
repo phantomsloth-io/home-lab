@@ -2,7 +2,10 @@ import json
 from math import floor, log10
 from urllib import request
 from datetime import date, timedelta
+import http.client, xmltodict, os, time, re, urllib.parse
 
+def encode_string(string):
+    return urllib.parse.quote(string)
 
 def nasa_neo(nasa_key):
     today = date.today()
@@ -27,3 +30,20 @@ def nasa_apod(nasa_key):
     theJSON = json.loads(webUrl.read())
     return theJSON
 
+def plex_search(search_query, library, plex_token):
+    api_url = http.client.HTTPSConnection("plex.phantomsloth.io")
+    api_url.request("GET", f"/hubs/search/?X-Plex-Token={plex_token}&query={encode_string(search_query)}")
+    lib_data = api_url.getresponse().read()
+    lib_data_dict = xmltodict.parse(lib_data)
+    try:
+        lib_item_1 = lib_data_dict['MediaContainer']['Hub'][library]['Video'][0]
+    except:
+        lib_item_1 = lib_data_dict['MediaContainer']['Hub'][library]['Video']
+    poster = f"https://plex.phantomsloth.io{lib_item_1['@thumb']}?X-Plex-Token={plex_token}"
+    title = f"{lib_item_1['@title']}"
+    rating = f"{lib_item_1['@rating']}"
+    tagline = f"{lib_item_1['@tagline']}"
+    summary = f"{lib_item_1['@summary']}"
+    content_rating = f"{lib_item_1['@contentRating']}"
+
+    return title, poster, tagline, rating, summary, content_rating
