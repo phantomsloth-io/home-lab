@@ -16,8 +16,8 @@ spec:
     targetRevision: HEAD
     helm:
       valueFiles:
-        - $values/values.yaml
-  - repoURL: 'git@github.com:phantomsloth-io/discord-bot.git'
+        - $values/argocd/apps/values/discord-bot-values.yaml
+  - repoURL: 'git@github.com:phantomsloth-io/home-lab.git'
     ref: values
   {{- if index .Values.apps "discord-bot" "sync" }}
   syncPolicy:
