@@ -4,10 +4,10 @@ cluster:
 apps:
   apps:
     enabled: true
-    sync: false
+    sync: true
   discord-bot:
     enabled: true
-    sync: false
+    sync: true
   hello-world-nginx:
     enabled: false
     sync: false
