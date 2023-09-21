@@ -12,7 +12,7 @@ spec:
     namespace: discord-bot
   project: default
   sources:
-  - repoURL: 'https://phantomsloth-io.github.io/discord-bot'
+  - repoURL: 'https://phantomsloth-io.github.io/helm'
     targetRevision: HEAD
     chart: discord-bot
     helm:
