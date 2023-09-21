@@ -30,6 +30,11 @@ spec:
         tags.datadoghq.com/env: {{ .Values.datadog.labels.env }}
         tags.datadoghq.com/service: {{ .Chart.Name }}
         tags.datadoghq.com/version: {{ .Chart.Version }}
+      annotations:
+        {{- if .Values.containers.annotations }}
+{{ toYaml .Values.containers.annotations | indent 8 }}
+        {{- end }}
+        admission.datadoghq.com/python-lib.version: v1.20.1
     spec:
       imagePullSecrets:
       - name: {{ .Values.imagePullSecrets.secret }}
@@ -41,3 +46,8 @@ spec:
         envFrom:
           {{- toYaml . | nindent 10 }}
         {{- end }}
+        env:
+        - name: DD_PROFILING_ENABLED
+          value: "true"
+        - name: DD_LOGS_INJECTION
+          value: "true"
