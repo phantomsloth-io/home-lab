@@ -12,8 +12,9 @@ spec:
     namespace: discord-bot
   project: default
   sources:
-  - repoURL: 'https://github.com/phantomsloth-io/discord-bot.git'
+  - repoURL: 'https://phantomsloth-io.github.io/discord-bot'
     targetRevision: HEAD
+    chart: discord-bot
     helm:
       valueFiles:
         - $values/argocd/apps/values/discord-bot-values.yaml
