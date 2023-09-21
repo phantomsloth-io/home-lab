@@ -13,7 +13,6 @@ spec:
   project: default
   sources:
   - repoURL: 'https://github.com/phantomsloth-io/discord-bot.git'
-    path: code/discord-bot
     targetRevision: HEAD
     helm:
       valueFiles:
