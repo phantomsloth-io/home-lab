@@ -11,3 +11,6 @@ apps:
   hello-world-nginx:
     enabled: false
     sync: false
+  plex:
+    enabled: true
+    sync: false
