@@ -8,7 +8,7 @@ spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: metallb-system
+    namespace: plex
   sources:
   - repoURL: https://raw.githubusercontent.com/plexinc/pms-docker/gh-pages
     targetRevision: "0.1.5"
