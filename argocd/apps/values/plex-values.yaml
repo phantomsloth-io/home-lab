@@ -1,0 +1,12 @@
+# ingress:
+#     enabled: true
+#     # note put a domain name that points to your ip address here
+#     url: https://demo-pms.example.com
+#     ingressClassName: ingress-nginx
+# pms:
+#     configStorage: 10Gi
+# extraEnv:
+#     # This claim is optional, and is only used for the first startup
+#     of PMS
+#     # The claim is obtained from https://www.plex.tv/claim/ is only valid for a few minutes
+#     PLEX_CLAIM: "claim"
