@@ -15,7 +15,7 @@ spec:
     chart: plex-media-server
     helm:
       valueFiles: 
-      - $values/argocd/infra/values/plex-values.yaml
+      - $values/argocd/apps/values/plex-values.yaml
   - repoURL: git@github.com:phantomsloth-io/home-lab.git
     ref: values
   {{- if index .Values.apps "plex" "sync" }}
