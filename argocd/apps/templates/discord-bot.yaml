@@ -13,7 +13,7 @@ spec:
   project: default
   sources:
   - repoURL: 'https://phantomsloth-io.github.io/helm'
-    targetRevision: 1.1.7
+    targetRevision: 1.1.8
     chart: discord-bot
     helm:
       valueFiles:
