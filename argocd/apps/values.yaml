@@ -12,5 +12,5 @@ apps:
     enabled: false
     sync: false
   plex:
-    enabled: true
+    enabled: false
     sync: false
