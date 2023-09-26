@@ -11,7 +11,7 @@ spec:
     namespace: datadog
   sources:
   - repoURL: https://helm.datadoghq.com
-    targetRevision: 3.36.2
+    targetRevision: 3.38.2
     chart: datadog
     helm:
       values: |
