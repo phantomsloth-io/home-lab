@@ -32,10 +32,6 @@ datadog:
   apm:
     portEnabled: true
     socketEnabled: false
-clusterAgent:
-  admissionController:
-    enabled: true
-    mutateUnlabelled: true
   resources:
     requests:
       cpu: 50m
@@ -98,3 +94,7 @@ agents:
       metrics:
         enabled: true
         url: 'http://10.0.0.239:8282'
+clusterAgent:
+  admissionController:
+    enabled: true
+    mutateUnlabelled: true
