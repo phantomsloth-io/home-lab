@@ -9,12 +9,14 @@ A simple homelab config for my Raspberry Pi K3s cluster.
 ## Technologies Used:
 ### CI/CD
 - ArgoCD
+- GitHub Actions
+- Helm
 
 ### Infrastructure:
 - MetalLB
-- 
 
 ### Monitoring:
+- Vector
 - Datadog
 - New Relic
 - Prometheus
