@@ -57,6 +57,9 @@ This document outlines the plan to refactor the bootstrap and reset scripts for 
 - Force Argo CD to reconcile and recreate the Deployments and StatefulSets with the correct Helm-compliant selectors.
 - Delete the old orphaned pods once the new pods are fully operational.
 
+### Task 7: Add Missing Namespace Manifest for MetalLB
+- Create `argocd/infra/manifests/namespaces/metallb.yaml` to ensure the `metallb-system` namespace is automatically provisioned by GitOps before MetalLB resources are applied.
+
 ---
 
 ## Verification Plan
