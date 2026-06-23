@@ -60,6 +60,11 @@ This document outlines the plan to refactor the bootstrap and reset scripts for 
 ### Task 7: Add Missing Namespace Manifest for MetalLB
 - Create `argocd/infra/manifests/namespaces/metallb.yaml` to ensure the `metallb-system` namespace is automatically provisioned by GitOps before MetalLB resources are applied.
 
+### Task 8: Update Datadog Helm Charts to Latest Stable Versions
+- Update the `targetRevision` of `datadog-operator` in `argocd/infra/templates/datadog-operator.yaml` from `1.1.0` to `1.27.1`.
+- Update the `targetRevision` of `datadog-agent` in `argocd/infra/templates/datadog-agent.yaml` from `3.47.2` to `3.226.0`.
+- Update the `targetRevision` of `datadog-opw` in `argocd/infra/templates/datadog-opw.yaml` from `1.3.1` to `2.17.0`.
+
 ---
 
 ## Verification Plan
