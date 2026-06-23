@@ -52,6 +52,11 @@ This document outlines the plan to refactor the bootstrap and reset scripts for 
 ### Task 5: Resolve Helm Template Nil Pointer Index Errors
 - Declare all optional infrastructure keys in `argocd/infra/values.yaml` to ensure Helm can render templates safely without throwing nil pointer index exceptions.
 
+### Task 6: Resolve Immutable Selector Conflict on Argo CD Deployments
+- Delete the existing bootstrap-installed Argo CD Deployments and StatefulSets using the `--cascade=orphan` flag to keep the current controller pods running.
+- Force Argo CD to reconcile and recreate the Deployments and StatefulSets with the correct Helm-compliant selectors.
+- Delete the old orphaned pods once the new pods are fully operational.
+
 ---
 
 ## Verification Plan
