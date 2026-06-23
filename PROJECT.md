@@ -46,6 +46,9 @@ This document outlines the plan to refactor the bootstrap and reset scripts for 
 - Clarify that the bootstrap script is now interactive and will prompt for the necessary configuration.
 - Add installation guidelines for Ubuntu virtual machines, noting that manual cgroups configuration is not required for these platforms.
 
+### Task 4: Resolve Merge Conflicts
+- Merge conflicting sections in `README.md` by combining the quick-start and VM deployment documentation with the detailed technology stacks and external links added to the `main` branch.
+
 ---
 
 ## Verification Plan

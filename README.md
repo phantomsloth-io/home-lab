@@ -42,13 +42,23 @@ The script will auto-detect the virtual machine network settings and use the cor
 - `argocd/apps`: User applications (Plex, Discord Bot, etc.).
 - `tools/`: Utility scripts for installation and cluster management.
 
-## Observability
-Currently configured to support:
-- **Datadog** (Optional)
-- **New Relic** (Optional)
-- **Prometheus/Grafana** (Planned/Template)
+## Technologies Used
+
+### CI/CD
+- Argo CD (v2.13+)
+- GitHub Actions
+- Helm
+
+### Infrastructure
+- MetalLB (v0.14+)
+
+### Monitoring & Observability
+- Vector
+- Datadog (Optional)
+- New Relic (Optional)
+- Prometheus / Grafana (Planned/Template)
 
 ## Applications
+- [Discord Bot](https://github.com/phantomsloth-io/discord-bot): Custom bot.
 - **Plex**: Media Server.
-- **Discord Bot**: Custom bot.
 - **Nginx**: Basic web server.
