@@ -26,8 +26,8 @@ infra:
     enabled: false
     sync: false
   datadog-agent:
-    enabled: false
-    sync: false
+    enabled: true
+    sync: true
   datadog-agent-app:
     enabled: false
     sync: false
