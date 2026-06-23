@@ -14,14 +14,17 @@ spec:
   sources:
   - repoURL: https://argoproj.github.io/argo-helm
     chart: argo-cd
-    targetRevision: 5.43.3
+    targetRevision: 7.7.7
     helm:
       valueFiles: 
       - $values/argocd/infra/values/argocd-values.yaml
-  - repoURL: git@github.com:phantomsloth-io/home-lab.git
+  - repoURL: {{ .Values.global.repoURL }}
+    targetRevision: {{ .Values.global.targetRevision }}
     ref: values
   {{- if index .Values.infra "argocd" "sync" }}
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
   {{- end }}
 {{- end }}

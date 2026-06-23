@@ -12,10 +12,12 @@ spec:
   project: default
   source:
     path: argocd/infra/manifests/namespaces
-    repoURL: git@github.com:phantomsloth-io/home-lab.git
-    targetRevision: HEAD
+    repoURL: {{ .Values.global.repoURL }}
+    targetRevision: {{ .Values.global.targetRevision }}
   {{- if index .Values.infra "namespaces" "sync" }}
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
   {{- end }}
 {{- end }}

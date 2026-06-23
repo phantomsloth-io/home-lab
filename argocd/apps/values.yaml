@@ -1,3 +1,7 @@
+global:
+  repoURL: https://github.com/phantomsloth-io/home-lab.git
+  targetRevision: HEAD
+
 cluster:
   name: "pi-k3s-cluster"
   project: default

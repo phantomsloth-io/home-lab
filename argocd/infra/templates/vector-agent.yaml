@@ -18,10 +18,13 @@ spec:
     helm:
       valueFiles: 
       - $values/argocd/infra/values/vector-values.yaml
-  - repoURL: git@github.com:phantomsloth-io/home-lab.git
+  - repoURL: {{ .Values.global.repoURL }}
+    targetRevision: {{ .Values.global.targetRevision }}
     ref: values
   {{- if index .Values.infra "vector-agent" "sync" }}
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
   {{- end }}
 {{- end }}

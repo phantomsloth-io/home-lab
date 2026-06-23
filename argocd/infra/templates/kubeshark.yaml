@@ -18,10 +18,12 @@ spec:
   #   helm:
   #     valueFiles: 
   #     - $values/argocd/infra/values/kubeshark-values.yaml
-  # - repoURL: git@github.com:phantomsloth-io/home-lab.git
+  # - repoURL: {{ .Values.global.repoURL }}
   #   ref: values
   {{- if index .Values.infra "kubeshark" "sync" }}
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
   {{- end }}
 {{- end }}
