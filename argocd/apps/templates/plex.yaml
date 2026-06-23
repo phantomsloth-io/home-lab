@@ -16,10 +16,13 @@ spec:
     helm:
       valueFiles: 
       - $values/argocd/apps/values/plex-values.yaml
-  - repoURL: git@github.com:phantomsloth-io/home-lab.git
+  - repoURL: {{ .Values.global.repoURL }}
+    targetRevision: {{ .Values.global.targetRevision }}
     ref: values
   {{- if index .Values.apps "plex" "sync" }}
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
   {{- end }}
 {{- end }}

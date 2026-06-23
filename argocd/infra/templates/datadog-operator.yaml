@@ -16,10 +16,13 @@ spec:
     helm:
       valueFiles:
       - $values/argocd/infra/values/datadog-operator-values.yaml
-  - repoURL: "git@github.com:phantomsloth-io/home-lab.git"
+  - repoURL: {{ .Values.global.repoURL }}
+    targetRevision: {{ .Values.global.targetRevision }}
     ref: values
   {{- if index .Values.infra "datadog-operator" "sync" }}
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
   {{- end }}
 {{- end }}

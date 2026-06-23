@@ -1,21 +1,19 @@
-{{- if index .Values.infra "infra" "enabled" }}
+{{- if index .Values.infra "metallb-config" "enabled" }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infra
+  name: metallb-config
   namespace: argocd
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
 spec:
+  project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
-  project: default
+    namespace: metallb-system
   source:
-    path: argocd/infra/
+    path: argocd/infra/manifests/metallb/
     repoURL: {{ .Values.global.repoURL }}
     targetRevision: {{ .Values.global.targetRevision }}
-  {{- if index .Values.infra "infra" "sync" }}
+  {{- if index .Values.infra "metallb-config" "sync" }}
   syncPolicy:
     automated:
       prune: true

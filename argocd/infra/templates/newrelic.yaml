@@ -20,10 +20,13 @@ spec:
           cluster: {{ .Values.cluster.name }}
       valueFiles:
       - $values/argocd/infra/values/newrelic-values.yaml
-  - repoURL: "git@github.com:phantomsloth-io/home-lab.git"
+  - repoURL: {{ .Values.global.repoURL }}
+    targetRevision: {{ .Values.global.targetRevision }}
     ref: values
   {{- if index .Values.infra "newrelic" "sync" }}
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
   {{- end }}
 {{- end }}

@@ -21,6 +21,8 @@ spec:
     targetRevision: 15.6.0
   {{- if index .Values.infra "prometheus" "sync" }}
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
   {{- end }}
 {{- end }}

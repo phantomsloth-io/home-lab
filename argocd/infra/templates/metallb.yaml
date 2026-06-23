@@ -11,15 +11,18 @@ spec:
     namespace: metallb-system
   sources:
   - repoURL: https://metallb.github.io/metallb
-    targetRevision: "0.13.10"
+    targetRevision: "0.14.9"
     chart: metallb
     helm:
       valueFiles: 
       - $values/argocd/infra/values/metallb-values.yaml
-  - repoURL: git@github.com:phantomsloth-io/home-lab.git
+  - repoURL: {{ .Values.global.repoURL }}
+    targetRevision: {{ .Values.global.targetRevision }}
     ref: values
   {{- if index .Values.infra "metallb" "sync" }}
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
   {{- end }}
 {{- end }}

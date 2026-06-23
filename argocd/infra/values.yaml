@@ -1,52 +1,27 @@
+global:
+  repoURL: https://github.com/phantomsloth-io/home-lab.git
+  targetRevision: HEAD
+
 cluster:
   name: "pi-k3s-cluster"
   project: default
+
 infra:
   infra:
     enabled: true
-    sync: false
+    sync: true
   namespaces:
-    enabled: false
-    sync: false
+    enabled: true
+    sync: true
   argocd:
     enabled: true
-    sync: false
-  datadog-agent:
-    enabled: true
-    sync: false
-  datadog-agent-app:
-    enabled: false
-    sync: false
-  datadog-operator:
-    enabled: false
-    sync: false
-  datadog-opw:
-    enabled: true
-    sync: false
-  istio-base:
-    enabled: false
-    sync: false
-  istio-discovery:
-    enabled: false
-    sync: false
-  kubeshark:
-    enabled: false
-    sync: false
+    sync: true
   metallb:
     enabled: true
-    sync: false
-  middleware-agent:
-    enabled: false
-    sync: false
-  newrelic:
-    enabled: false
-    sync: false
-  prometheus:
-    enabled: false
-    sync: false
-  signoz:
-    enabled: false
-    sync: false
-  vector-agent:
+    sync: true
+  metallb-config:
+    enabled: true
+    sync: true
+  datadog-opw:
     enabled: false
     sync: false

@@ -19,7 +19,8 @@ spec:
               clusterName: {{ .Values.cluster.name }}
       valueFiles:
         - $values/argocd/infra/values/datadog-agent-values.yaml
-  - repoURL: "git@github.com:phantomsloth-io/home-lab.git"
+  - repoURL: "{{ .Values.global.repoURL }}"
+    targetRevision: {{ .Values.global.targetRevision }}
     ref: values
   {{- if index .Values.infra "datadog-agent" "sync" }}
   syncPolicy:
@@ -28,6 +29,8 @@ spec:
         istio-injection: enabled
     syncOptions:
     - CreateNamespace=true
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
   {{- end }}
 {{- end }}

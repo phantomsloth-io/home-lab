@@ -13,10 +13,12 @@ spec:
   project: default
   source:
     path: argocd/infra/manifests/datadog
-    repoURL: git@github.com:phantomsloth-io/home-lab.git
-    targetRevision: HEAD
+    repoURL: {{ .Values.global.repoURL }}
+    targetRevision: {{ .Values.global.targetRevision }}
   {{- if index .Values.infra "datadog-agent-app" "sync" }}
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
   {{- end }}
 {{- end }}
