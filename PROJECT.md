@@ -49,6 +49,9 @@ This document outlines the plan to refactor the bootstrap and reset scripts for 
 ### Task 4: Resolve Merge Conflicts
 - Merge conflicting sections in `README.md` by combining the quick-start and VM deployment documentation with the detailed technology stacks and external links added to the `main` branch.
 
+### Task 5: Resolve Helm Template Nil Pointer Index Errors
+- Declare all optional infrastructure keys in `argocd/infra/values.yaml` to ensure Helm can render templates safely without throwing nil pointer index exceptions.
+
 ---
 
 ## Verification Plan

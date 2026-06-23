@@ -25,3 +25,36 @@ infra:
   datadog-opw:
     enabled: false
     sync: false
+  datadog-agent:
+    enabled: false
+    sync: false
+  datadog-agent-app:
+    enabled: false
+    sync: false
+  datadog-operator:
+    enabled: false
+    sync: false
+  istio-base:
+    enabled: false
+    sync: false
+  istio-discovery:
+    enabled: false
+    sync: false
+  kubeshark:
+    enabled: false
+    sync: false
+  middleware-agent:
+    enabled: false
+    sync: false
+  newrelic:
+    enabled: false
+    sync: false
+  prometheus:
+    enabled: false
+    sync: false
+  signoz:
+    enabled: false
+    sync: false
+  vector-agent:
+    enabled: false
+    sync: false
